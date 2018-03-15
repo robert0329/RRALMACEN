@@ -127,9 +127,9 @@ namespace RRAlmacen.Almacen.Productos
                 {
                     varID_PRODUCTO = lvProductos.SelectedItems[0].Text;
                     ListViewItem listItem = lvProductos.SelectedItems[0];
-                    string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
+                    //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
 
-                    SqlConnection cnnReadData = new SqlConnection(selectSQL);
+                    SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
 
                     if (cnnReadData.State == ConnectionState.Open)
                         cnnReadData.Close();else cnnReadData.Open();
@@ -186,9 +186,9 @@ namespace RRAlmacen.Almacen.Productos
         {
             try
             {
-                string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
+                //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
 
-                SqlConnection cnnReadData = new SqlConnection(selectSQL);
+                SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
                 cnnReadData.Open();
                 int I = 0;
 
@@ -280,9 +280,9 @@ namespace RRAlmacen.Almacen.Productos
             {
                 try
                 {
-                    string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
+                    //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
                     //Buscamos el Folio 
-                    SqlConnection cnnReadData = new SqlConnection(selectSQL);
+                    SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
 
                     if (cnnReadData.State == ConnectionState.Open)
                         cnnReadData.Close();
@@ -305,7 +305,7 @@ namespace RRAlmacen.Almacen.Productos
 
                     //cmddetDelete.ExecuteNonQuery();
 
-                    SqlConnection cnnDelete = new SqlConnection(selectSQL);
+                    SqlConnection cnnDelete = new SqlConnection(RRSOFT.CnnStr);
                     cnnDelete.Open();
                     SqlCommand cmdDelete = new SqlCommand();
                     cmdDelete.Connection = cnnDelete;
@@ -371,7 +371,6 @@ namespace RRAlmacen.Almacen.Productos
             }
         }
         #endregion
-
         //private void cboxarea_SelectedIndexChanged(object sender, EventArgs e)
         //{
         //    if (cboxarea.Text == "ABARROTES")

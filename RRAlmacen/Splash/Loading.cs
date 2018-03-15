@@ -31,7 +31,7 @@ namespace RRAlmacen.Splash
         }
         private void RunPrincipal()
         {
-            Almacen.Productos.ProductosForm Login = new Almacen.Productos.ProductosForm();
+            Principal Login = new Principal();
             Login.ShowDialog();
 
         }
