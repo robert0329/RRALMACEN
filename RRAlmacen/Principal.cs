@@ -37,7 +37,9 @@ namespace RRAlmacen
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-
+            Almacen.Usuarios.RegistroUsuarios _frmproducto = new Almacen.Usuarios.RegistroUsuarios();
+            _frmproducto.StartPosition = FormStartPosition.CenterScreen;
+            _frmproducto.ShowDialog();
         }
 
         private void btnReporte_Click(object sender, EventArgs e)

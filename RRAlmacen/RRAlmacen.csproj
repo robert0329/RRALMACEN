@@ -68,6 +68,12 @@
     <Compile Include="Almacen\Productos\ProductosForm.Designer.cs">
       <DependentUpon>ProductosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\Usuarios\RegistroUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Usuarios\RegistroUsuarios.Designer.cs">
+      <DependentUpon>RegistroUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="BLL\ProductosBLL.cs" />
     <Compile Include="DAL\RRSOFT.cs" />
     <Compile Include="Entidades\Productos.cs" />
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Productos\ProductosForm.resx">
       <DependentUpon>ProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Usuarios\RegistroUsuarios.resx">
+      <DependentUpon>RegistroUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
