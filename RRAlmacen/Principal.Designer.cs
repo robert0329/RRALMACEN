@@ -93,6 +93,7 @@
             // 
             this.mnuAdministrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearProductoToolStripMenuItem});
+            this.mnuAdministrar.Enabled = false;
             this.mnuAdministrar.Name = "mnuAdministrar";
             this.mnuAdministrar.Size = new System.Drawing.Size(81, 20);
             this.mnuAdministrar.Text = "Administrar";
@@ -109,6 +110,7 @@
             this.respaldoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearRespaldoToolStripMenuItem,
             this.restaurarToolStripMenuItem});
+            this.respaldoToolStripMenuItem.Enabled = false;
             this.respaldoToolStripMenuItem.Name = "respaldoToolStripMenuItem";
             this.respaldoToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.respaldoToolStripMenuItem.Text = "Respaldo";
@@ -132,6 +134,7 @@
             this.btnUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnUsuarios.Enabled = false;
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));

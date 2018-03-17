@@ -147,7 +147,7 @@ namespace RRAlmacen.Almacen.Productos
                     {
                         txtCantidad.Text = drReadData["Cantidad"].ToString();
                         txtNombre.Text = drReadData["Desc_Producto"].ToString();
-                        txtPrecio.Text = String.Format("{0:c}", drReadData["Precio"]);
+                        txtPrecio.Text = drReadData["Precio"].ToString();
                         btnstockMinima.Text = drReadData["Stock_Minima"].ToString();
                         txtDevolucion.Text = drReadData["Devolucion"].ToString();
                         //textBox1.Text = varID_PRODUCTO;

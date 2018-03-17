@@ -78,8 +78,10 @@ namespace RRAlmacen
             Login._PATERNO + " " +
             Login._MATERNO;
             mnuVentas.Enabled = Login._VENTAS;
+            respaldoToolStripMenuItem.Enabled = Login._ADMINISTRAR;
             mnuAdministrar.Enabled = Login._ADMINISTRAR;
             mnuConsultas.Enabled = Login._CONSULTAS;
+
 
             btnVneta.Enabled = Login._VENTAS;
             btnConsultasVentas.Enabled = Login._CONSULTAS;

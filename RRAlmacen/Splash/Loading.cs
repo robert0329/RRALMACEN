@@ -24,12 +24,12 @@ namespace RRAlmacen.Splash
         private void tmr_Tick_1(object sender, EventArgs e)
         {
             System.Threading.Thread run = new System.Threading.Thread(new System.Threading.ThreadStart(RunPrincipal));
-            this.Close();
             run.SetApartmentState(System.Threading.ApartmentState.STA);
             run.Start();
         }
         private void RunPrincipal()
         {
+            this.Close();
             RRAlmacen.Almacen.Usuarios.Login Login = new RRAlmacen.Almacen.Usuarios.Login();
             Login.ShowDialog();
         }
