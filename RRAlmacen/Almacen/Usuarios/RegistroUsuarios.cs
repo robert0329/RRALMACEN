@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RRAlmacen.Entidades;
 
 namespace RRAlmacen.Almacen.Usuarios
 {
@@ -18,13 +19,24 @@ namespace RRAlmacen.Almacen.Usuarios
         {
             InitializeComponent();
         }
+        
+        private void RegistroUsuarios_Load(object sender, EventArgs e)
+        {
+            cargar();
+        }
+
+        #region VARIABLES
+        string I;
         static SqlConnection cnnUsers;
         static SqlDataAdapter daUsers;
         static SqlCommandBuilder cbUsers;
         DataSet dsUsers = new DataSet("dsUsers");
         CurrencyManager cmUsers;
-        private void RegistroUsuarios_Load(object sender, EventArgs e)
+        #endregion
+        #region Funciones
+        public void cargar()
         {
+
             cnnUsers = new SqlConnection(RRSOFT.CnnStr);
             daUsers = new SqlDataAdapter();
             daUsers.SelectCommand = new SqlCommand("SELECT * FROM Usuarios", cnnUsers);
@@ -36,6 +48,7 @@ namespace RRAlmacen.Almacen.Usuarios
             dsUsers.Clear();
 
             daUsers.Fill(dsUsers, "Usuarios");
+            UsuarioId.DataBindings.Add("Text", dsUsers, "Usuarios.Usuario_Id");
             txtUsuario.DataBindings.Add("Text", dsUsers, "Usuarios.USER_NAME");
             txtContraseña.DataBindings.Add("Text", dsUsers, "Usuarios.USER_PASSWORD");
             txtConContraseña.DataBindings.Add("Text", dsUsers, "Usuarios.USER_PASSWORD");
@@ -48,31 +61,25 @@ namespace RRAlmacen.Almacen.Usuarios
             chkFacturacion.DataBindings.Add("Checked", dsUsers, "Usuarios.FACTURACION", true);
             chkConsultas.DataBindings.Add("Checked", dsUsers, "Usuarios.CONSULTAS", true);
             chkDeshacer.DataBindings.Add("Checked", dsUsers, "Usuarios.DESHACER_VENTA", true);
+            chkCatalogos.DataBindings.Add("Checked", dsUsers, "Usuarios.CATALOGOS", true);
+            chkLogon.DataBindings.Add("Checked", dsUsers, "Usuarios.LOGON", true);
             cmUsers = (CurrencyManager)this.BindingContext[dsUsers, "Usuarios"];
             cnnUsers.Close();
         }
-
-        private void btnGarabar_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection cnnInsert = new SqlConnection(RRSOFT.CnnStr);
-                cnnInsert.Open();
 
-                SqlCommand cmdInsert = new SqlCommand();
-                cmdInsert.Connection = cnnInsert;
+        }
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
 
-                cmdInsert.CommandText += "INSERT INTO Usuarios (USER_NAME, USER_PASSWORD, GRUPO, PATERNO, MATERNO, NOMBRE, VENTAS, ADMINISTRAR, REPORTES, CATALOGOS, CONSULTAS, DESHACER_VENTA, LOGON, FACTURACION)";
-                cmdInsert.CommandText += " VALUES('" + txtNombre.Text + "', '" + txtConContraseña.Text + "', 'Usuarios', '" + txtPaterno.Text + "', '" + txtMaterno.Text + "', '" + txtNombre.Text + "','" + (chkVentas.Checked ? -1 : 0) + "', '" + (chkAdministrar.Checked ? -1 : 0) + "', '" + (chkReportes.Checked ? -1 : 0) + "', '" + (chkCatalogos.Checked ? -1 : 0) + "', '" + (chkConsultas.Checked ? -1 : 0) + "', '" + (chkDeshacer.Checked ? -1 : 0) + "', '" + (chkLogon.Checked ? -1 : 0) + "', '" + (chkFacturacion.Checked ? -1 : 0) + "')    ";
-                cmdInsert.ExecuteNonQuery();
-                MessageBox.Show("El Agrego con exito el Usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cnnInsert.Close();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "" + ex.StackTrace);
-            }
+        }
+        public void Id()
+        {
+            int id = BLL.UsuariosBLL.Identity();
+            if (id > 1 || BLL.UsuariosBLL.GetList().Count > 0)
+                I = (id + 1).ToString();
+            UsuarioId.Text = I;
         }
         private void new_usuario()
         {
@@ -146,6 +153,7 @@ namespace RRAlmacen.Almacen.Usuarios
         }
         private void Limpia()
         {
+            UsuarioId.Text = "";
             txtUsuario.Text = "";
             txtContraseña.Text = "";
             txtConContraseña.Text = "";
@@ -157,7 +165,11 @@ namespace RRAlmacen.Almacen.Usuarios
             chkConsultas.Checked = false;
             chkAdministrar.Checked = false;
             chkFacturacion.Checked = false;
+            chkCatalogos.Checked = false;
             chkDeshacer.Checked = false;
+            chkLogon.Checked = false;
+            Id();
+            //UsuarioId.Enabled = true;
         }
         private void txtConContraseña_Validating(object sender, CancelEventArgs e)
         {
@@ -175,5 +187,65 @@ namespace RRAlmacen.Almacen.Usuarios
             }
 
         }
+        #endregion
+        #region Botones
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Limpia();
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            btnGarabar.PerformClick();
+        }
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            cmUsers.Position = 0;
+        }
+        private void btnFinal_Click(object sender, EventArgs e)
+        {
+            cmUsers.Position = cmUsers.Count - 1;
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            cmUsers.Position += 1;
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            cmUsers.Position -= 1;
+        }
+        private void btnGarabar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.Usuarios usuarios = new Entidades.Usuarios();
+                usuarios.Usuario_Id = Convert.ToInt32(UsuarioId.Text);
+                usuarios.USER_NAME = txtUsuario.Text;
+                usuarios.USER_PASSWORD = txtConContraseña.Text;
+                usuarios.NOMBRE = txtNombre.Text;
+                usuarios.PATERNO = txtPaterno.Text;
+                usuarios.MATERNO = txtMaterno.Text;
+                usuarios.GRUPO = txtNombre.Text;
+                usuarios.VENTAS = Convert.ToBoolean(chkVentas.Checked ? -1 : 0);
+                usuarios.ADMINISTRAR = Convert.ToBoolean(chkAdministrar.Checked ? -1 : 0);
+                usuarios.REPORTES = Convert.ToBoolean(chkReportes.Checked ? -1 : 0);
+                usuarios.CONSULTAS = Convert.ToBoolean(chkConsultas.Checked ? -1 : 0);
+                usuarios.CATALOGOS = Convert.ToBoolean(chkCatalogos.Checked ? -1 : 0);
+                usuarios.DESHACER_VENTA = Convert.ToBoolean(chkDeshacer.Checked ? -1 : 0);
+                usuarios.LOGON = Convert.ToBoolean(chkLogon.Checked ? -1 : 0);
+                usuarios.FACTURACION = Convert.ToBoolean(chkFacturacion.Checked ? -1 : 0);
+
+                if (BLL.UsuariosBLL.Save(usuarios) == true)
+                {
+                    MessageBox.Show("Guardado exitoso!!!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "" + ex.StackTrace);
+            }
+        }
+        #endregion
     }
 }

@@ -32,8 +32,8 @@ namespace RRAlmacen.Almacen.Productos
                 HorizontalAlignment.Left);
             lvProductos.Columns.Add("Existencia", 90,
                 HorizontalAlignment.Right);
-            lvProductos.Columns.Add("Precio", 90,
-                HorizontalAlignment.Right);
+            lvProductos.Columns.Add("Precio", 90, HorizontalAlignment.Right);
+            lvProductos.Columns.Add("Devolucion", 90, HorizontalAlignment.Right);
         }
         void lvProductos_DoubleClick(object sender, System.EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace RRAlmacen.Almacen.Productos
 
                 SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id," +
                     " Desc_Producto," +
-                    " Cantidad,Precio " +
+                    " Cantidad,Precio,Devolucion,Total_Unidad" +
                     " FROM Productos" +
                     " WHERE Desc_Producto like '%" + prmDESC_PRODUCTO + "%'", cnnReadData);
 
@@ -103,6 +103,8 @@ namespace RRAlmacen.Almacen.Productos
                     lvProductos.Items[I].SubItems.Add(drReadData["Desc_Producto"].ToString());
                     lvProductos.Items[I].SubItems.Add(drReadData["Cantidad"].ToString());
                     lvProductos.Items[I].SubItems.Add(String.Format("{0:c}", drReadData["Precio"]));
+                    lvProductos.Items[I].SubItems.Add(drReadData["Devolucion"].ToString());
+                    lvProductos.Items[I].SubItems.Add(drReadData["Total_Unidad"].ToString());
                     I += 1;
                 }
                 drReadData.Close();

@@ -31,10 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.puntoDeVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVentas = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuConsultas = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAdministrar = new System.Windows.Forms.ToolStripMenuItem();
             this.crearProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.respaldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearRespaldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
@@ -48,8 +52,9 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivosToolStripMenuItem,
-            this.consultasToolStripMenuItem,
-            this.administrarToolStripMenuItem});
+            this.mnuConsultas,
+            this.mnuAdministrar,
+            this.respaldoToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1136, 24);
@@ -59,30 +64,38 @@
             // archivosToolStripMenuItem
             // 
             this.archivosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.puntoDeVentaToolStripMenuItem});
+            this.mnuVentas,
+            this.cerrarSesionToolStripMenuItem});
             this.archivosToolStripMenuItem.Name = "archivosToolStripMenuItem";
             this.archivosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.archivosToolStripMenuItem.Text = "Archivos";
             // 
-            // puntoDeVentaToolStripMenuItem
+            // mnuVentas
             // 
-            this.puntoDeVentaToolStripMenuItem.Name = "puntoDeVentaToolStripMenuItem";
-            this.puntoDeVentaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.puntoDeVentaToolStripMenuItem.Text = "Punto de venta";
+            this.mnuVentas.Name = "mnuVentas";
+            this.mnuVentas.Size = new System.Drawing.Size(154, 22);
+            this.mnuVentas.Text = "Punto de venta";
             // 
-            // consultasToolStripMenuItem
+            // cerrarSesionToolStripMenuItem
             // 
-            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.consultasToolStripMenuItem.Text = "Consultas";
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
+            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
-            // administrarToolStripMenuItem
+            // mnuConsultas
             // 
-            this.administrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuConsultas.Name = "mnuConsultas";
+            this.mnuConsultas.Size = new System.Drawing.Size(71, 20);
+            this.mnuConsultas.Text = "Consultas";
+            // 
+            // mnuAdministrar
+            // 
+            this.mnuAdministrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearProductoToolStripMenuItem});
-            this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.administrarToolStripMenuItem.Text = "Administrar";
+            this.mnuAdministrar.Name = "mnuAdministrar";
+            this.mnuAdministrar.Size = new System.Drawing.Size(81, 20);
+            this.mnuAdministrar.Text = "Administrar";
             // 
             // crearProductoToolStripMenuItem
             // 
@@ -90,6 +103,29 @@
             this.crearProductoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.crearProductoToolStripMenuItem.Text = "Agregar Producto";
             this.crearProductoToolStripMenuItem.Click += new System.EventHandler(this.crearProductoToolStripMenuItem_Click);
+            // 
+            // respaldoToolStripMenuItem
+            // 
+            this.respaldoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearRespaldoToolStripMenuItem,
+            this.restaurarToolStripMenuItem});
+            this.respaldoToolStripMenuItem.Name = "respaldoToolStripMenuItem";
+            this.respaldoToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.respaldoToolStripMenuItem.Text = "Respaldo";
+            // 
+            // crearRespaldoToolStripMenuItem
+            // 
+            this.crearRespaldoToolStripMenuItem.Name = "crearRespaldoToolStripMenuItem";
+            this.crearRespaldoToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.crearRespaldoToolStripMenuItem.Text = "Crear Respaldo";
+            this.crearRespaldoToolStripMenuItem.Click += new System.EventHandler(this.crearRespaldoToolStripMenuItem_Click);
+            // 
+            // restaurarToolStripMenuItem
+            // 
+            this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
+            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.restaurarToolStripMenuItem.Text = "Restaurar";
+            this.restaurarToolStripMenuItem.Click += new System.EventHandler(this.restaurarToolStripMenuItem_Click);
             // 
             // btnUsuarios
             // 
@@ -211,8 +247,9 @@
             this.IsMdiContainer = true;
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "RR-Almacen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -223,16 +260,20 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem archivosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem puntoDeVentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem crearProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuVentas;
+        private System.Windows.Forms.ToolStripMenuItem mnuConsultas;
+        private System.Windows.Forms.ToolStripMenuItem mnuAdministrar;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnReporte;
         private System.Windows.Forms.Button btnConsultasVentas;
         private System.Windows.Forms.Button btnVneta;
+        private System.Windows.Forms.ToolStripMenuItem crearProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem respaldoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearRespaldoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem;
     }
 }
 

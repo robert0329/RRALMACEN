@@ -24,6 +24,7 @@ namespace RRAlmacen.DAL
             }
         }
         public virtual DbSet<Productos> productos { get; set; }
-        
+        public virtual DbSet<Usuarios> usuario { get; set; }
+
     }
 }

@@ -20,11 +20,13 @@ namespace RRAlmacen.Almacen.Productos
         {
             InitializeComponent();
         }
+        
         #region Variables Globales
             public string varID_PRODUCTO = "";
             public int varUnidad = 0;
             public string _FOLIO = "";
             public string area = "";
+        
         #endregion
 
         #region Validaciones
@@ -115,25 +117,29 @@ namespace RRAlmacen.Almacen.Productos
         {
 
             Producto();
-            txtCantidad.Focus();
+            //txtCantidad.Focus();
             btnAceptar.Enabled = false;
 
         }
         private void Producto()
         {
+            CampoRequerrido.Clear();
             try
             {
                 if (lvProductos.Items.Count != 0)
                 {
+                    btnModificar.Enabled = true;
+                    btnEliminar.Enabled = true;
+
                     varID_PRODUCTO = lvProductos.SelectedItems[0].Text;
                     ListViewItem listItem = lvProductos.SelectedItems[0];
-                    //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
+                    
 
                     SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
 
                     if (cnnReadData.State == ConnectionState.Open)
                         cnnReadData.Close();else cnnReadData.Open();
-                    SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id, Desc_Producto ,Cantidad, Precio, Stock_Minima" +" FROM Productos" + " WHERE Producto_Id like '%" + varID_PRODUCTO + "%'", cnnReadData);
+                    SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id, Desc_Producto ,Cantidad, Precio, Stock_Minima, Devolucion" +" FROM Productos" + " WHERE Producto_Id like '%" + varID_PRODUCTO + "%'", cnnReadData);
 
                     SqlDataReader drReadData;
                     drReadData = cmdReadData.ExecuteReader();
@@ -141,9 +147,11 @@ namespace RRAlmacen.Almacen.Productos
                     {
                         txtCantidad.Text = drReadData["Cantidad"].ToString();
                         txtNombre.Text = drReadData["Desc_Producto"].ToString();
-                        txtPrecio.Text = drReadData["Precio"].ToString();
+                        txtPrecio.Text = String.Format("{0:c}", drReadData["Precio"]);
                         btnstockMinima.Text = drReadData["Stock_Minima"].ToString();
-                        textBox1.Text = varID_PRODUCTO;
+                        txtDevolucion.Text = drReadData["Devolucion"].ToString();
+                        //textBox1.Text = varID_PRODUCTO;
+                        txtDevolucion.Enabled = true;
                     }
                 }
                 else
@@ -164,52 +172,71 @@ namespace RRAlmacen.Almacen.Productos
             productos.Cantidad = Convert.ToInt32(txtCantidad.Text);
             productos.Stock_Minima = Convert.ToInt32(btnstockMinima.Text);
             productos.Area = cboxUnidad.Text;
-
+            productos.Devolucion = 0;
+            productos.Total_Unidad = Convert.ToInt32(txtCantidad.Text) - productos.Devolucion;
+            productos.Total = Convert.ToInt32(productos.Total_Unidad) * Convert.ToInt32(productos.Precio);
+           
             if (BLL.ProductosBLL.Save(productos) == true)
             {
                 MessageBox.Show("Se ha guardado con Exito!!!");
+                ReadData();
+                CancelButton.PerformClick();
             }
             else
                 MessageBox.Show("No Se ha guardado con Exito!!!");
 
+        }
+        private void Cerrar()
+        {
+            ProductosForm _frmInsProductos = new ProductosForm();
+            _frmInsProductos.StartPosition = FormStartPosition.CenterParent;
+            _frmInsProductos.ShowDialog();
         }
         private void Encabezados()
         {
             lvProductos.View = View.Details;
             lvProductos.Columns.Add("Producto_Id", 100, HorizontalAlignment.Center);
             lvProductos.Columns.Add("Nombre Producto", 150, HorizontalAlignment.Center);
-            lvProductos.Columns.Add("Precio", 110, HorizontalAlignment.Center);
+            lvProductos.Columns.Add("Precio Unitario", 110, HorizontalAlignment.Center);
             lvProductos.Columns.Add("Cantidad", 80, HorizontalAlignment.Center);
-            lvProductos.Columns.Add("Stock Minima", 100, HorizontalAlignment.Center);
+            //lvProductos.Columns.Add("Stock Minima", 80, HorizontalAlignment.Center);
+            lvProductos.Columns.Add("Devolucion", 100, HorizontalAlignment.Center);
+            lvProductos.Columns.Add("Total Unidad", 100, HorizontalAlignment.Center);
+            lvProductos.Columns.Add("Total", 100, HorizontalAlignment.Center);
+
         }
         private void ReadData()
         {
+            btnCancelar.PerformClick();
             try
             {
-                //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
 
                 SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
                 cnnReadData.Open();
                 int I = 0;
 
-                SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id, Desc_Producto as NOMBRE, Precio as PRECIO, Cantidad,Stock_Minima FROM Productos", cnnReadData);
+                SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id, Desc_Producto as NOMBRE, Precio as PRECIO, Cantidad,Stock_Minima,Devolucion,Total_Unidad,Total FROM Productos", cnnReadData);
 
                 SqlDataReader drReadData;
                 drReadData = cmdReadData.ExecuteReader();
                 lvProductos.Items.Clear();
 
-
+                int total = 0;
                 while (drReadData.Read())
                 {
                     lvProductos.Items.Add(drReadData["Producto_Id"].ToString());
                     lvProductos.Items[I].SubItems.Add(drReadData["NOMBRE"].ToString());
 
-                    lvProductos.Items[I].SubItems.Add(drReadData["PRECIO"].ToString());
+                    lvProductos.Items[I].SubItems.Add(String.Format("{0:c}", drReadData["Precio"]));
 
                     lvProductos.Items[I].SubItems.Add(drReadData["Cantidad"].ToString());
 
-                    lvProductos.Items[I].SubItems.Add(drReadData["Stock_Minima"].ToString());
+                    //lvProductos.Items[I].SubItems.Add(drReadData["Stock_Minima"].ToString());
+                    lvProductos.Items[I].SubItems.Add(drReadData["Devolucion"].ToString());
+                    lvProductos.Items[I].SubItems.Add(drReadData["Total_Unidad"].ToString());
+                    lvProductos.Items[I].SubItems.Add(String.Format("{0:c}", drReadData["Total"]));
 
+                    total += Convert.ToInt32(drReadData["Total"].ToString());
                     if (drReadData["Cantidad"].ToString() == "1"
                         || drReadData["Cantidad"].ToString() == "2" ||
                         drReadData["Cantidad"].ToString() == "3"
@@ -223,6 +250,7 @@ namespace RRAlmacen.Almacen.Productos
 
                     I += 1;
                 }
+                txtTotal.Text = String.Format("{0:c}", total);
 
                 if (I != 0)
                 {
@@ -245,21 +273,30 @@ namespace RRAlmacen.Almacen.Productos
             this.lvProductos.DoubleClick += new System.EventHandler(this.lvProductos_DoubleClick);
             Encabezados();
             ReadData();
+            var u1 = new Utilidades(txtPrecio, "N");
+            var u2 = new Utilidades(txtCantidad, "N");
+            var u3 = new Utilidades(txtDevolucion, "N");
+            var u4 = new Utilidades(btnstockMinima, "N");
         }
         private void UpdateData()
         {
             Entidades.Productos productos = new Entidades.Productos();
 
-            productos.Producto_Id = Convert.ToInt32(textBox1.Text);
+            productos.Producto_Id = Convert.ToInt32(varID_PRODUCTO);
             productos.Desc_Producto = txtNombre.Text;
             productos.Precio = Convert.ToInt32(txtPrecio.Text);
             productos.Cantidad = Convert.ToInt32(txtCantidad.Text);
             productos.Stock_Minima = Convert.ToInt32(btnstockMinima.Text);
             productos.Area = cboxUnidad.Text;
+            productos.Devolucion = Convert.ToInt32(txtDevolucion.Text);
+            productos.Total_Unidad = Convert.ToInt32(txtCantidad.Text) - productos.Devolucion;
+            productos.Total = Convert.ToInt32(productos.Total_Unidad) * Convert.ToInt32(productos.Precio);
 
             if (BLL.ProductosBLL.Save(productos) == true)
             {
                 MessageBox.Show("Se ha Modificado con Exito!!!");
+                ReadData();
+                CancelButton.PerformClick();
             }
             else
                 MessageBox.Show("No Se ha Modificado con Exito!!!");
@@ -272,7 +309,13 @@ namespace RRAlmacen.Almacen.Productos
             txtNombre.Text =
             txtPrecio.Text =
             txtCantidad.Text =
-            btnstockMinima.Text = textBox1.Text = "";
+            btnstockMinima.Text = 
+            
+            txtDevolucion.Text = "";
+            btnModificar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnAceptar.Enabled = true;
+            
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -280,8 +323,6 @@ namespace RRAlmacen.Almacen.Productos
             {
                 try
                 {
-                    //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
-                    //Buscamos el Folio 
                     SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
 
                     if (cnnReadData.State == ConnectionState.Open)
@@ -315,14 +356,7 @@ namespace RRAlmacen.Almacen.Productos
                     cmdDelete.ExecuteNonQuery();
 
                     MessageBox.Show("Se Elimino el Producto Seleccionado");
-
-
-                    ProductosForm _frmInsProductos = new ProductosForm();
-                    _frmInsProductos.StartPosition = FormStartPosition.Manual;
-                    _frmInsProductos.Show();
-
-                    this.Close();
-
+                    ReadData();
                 }
 
                 catch (Exception ex)
@@ -370,58 +404,11 @@ namespace RRAlmacen.Almacen.Productos
                 UpdateData();
             }
         }
+        private void lvProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         #endregion
-        //private void cboxarea_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (cboxarea.Text == "ABARROTES")
-        //    {
-        //        int I = 0;
-        //        area = "";
-        //        try
-        //        {
-        //            string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
-
-        //            SqlConnection cnnReadData = new SqlConnection(selectSQL);
-
-        //            if (cnnReadData.State == ConnectionState.Open)
-        //                cnnReadData.Close();
-        //            else cnnReadData.Open();
-
-        //            SqlCommand cmdReadData = new SqlCommand("SELECT Desc_Producto, Producto_Id," +
-        //               "Precio ,Area, Cantidad, Stock_Minima FROM Productos WHERE Area like '%" + area + "%'", cnnReadData);
-        //            SqlDataReader drReadData;
-        //            drReadData = cmdReadData.ExecuteReader();
-
-        //            lvProductos.Items.Clear();
-
-        //            while (drReadData.Read())
-        //            {
-
-        //                lvProductos.Items.Add(drReadData["Producto_Id"].ToString());
-
-        //                lvProductos.Items[I].SubItems.Add(drReadData["Desc_Producto"].ToString());
-
-        //                lvProductos.Items[I].SubItems.Add(drReadData["Precio"].ToString());
-
-        //                lvProductos.Items[I].SubItems.Add(drReadData["Cantidad"].ToString());
-
-        //                lvProductos.Items[I].SubItems.Add(drReadData["Stock_Minima"].ToString());
-        //                I += 1;
-        //            }
-        //            //Agregamos un registro más
-        //            if (I != 0)
-        //            {
-        //                lvProductos.Items.Add("");
-        //                lvProductos.Items[I].SubItems.Add("");
-        //                lvProductos.Items[I].SubItems.Add("");
-        //            }
-                    
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }    
-        //}
+        
     }
 }

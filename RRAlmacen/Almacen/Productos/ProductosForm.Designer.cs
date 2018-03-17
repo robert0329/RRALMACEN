@@ -46,8 +46,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.Salir = new System.Windows.Forms.Button();
             this.CampoRequerrido = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtDevolucion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CampoRequerrido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,12 +60,13 @@
             this.lvProductos.Size = new System.Drawing.Size(904, 289);
             this.lvProductos.TabIndex = 20;
             this.lvProductos.UseCompatibleStateImageBehavior = false;
+            this.lvProductos.SelectedIndexChanged += new System.EventHandler(this.lvProductos_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(99, 306);
+            this.label1.Location = new System.Drawing.Point(2, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 22;
@@ -71,7 +74,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(102, 334);
+            this.txtNombre.Location = new System.Drawing.Point(5, 340);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(110, 20);
             this.txtNombre.TabIndex = 21;
@@ -80,7 +83,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(231, 307);
+            this.label3.Location = new System.Drawing.Point(118, 313);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 24;
@@ -88,7 +91,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(234, 334);
+            this.txtPrecio.Location = new System.Drawing.Point(121, 340);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(73, 20);
             this.txtPrecio.TabIndex = 23;
@@ -97,15 +100,15 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCantidad.Location = new System.Drawing.Point(334, 307);
+            this.lblCantidad.Location = new System.Drawing.Point(197, 313);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(123, 16);
+            this.lblCantidad.Size = new System.Drawing.Size(62, 16);
             this.lblCantidad.TabIndex = 26;
-            this.lblCantidad.Text = "Cantidad Productos";
+            this.lblCantidad.Text = "Cantidad";
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(337, 334);
+            this.txtCantidad.Location = new System.Drawing.Point(200, 340);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(120, 20);
             this.txtCantidad.TabIndex = 25;
@@ -114,7 +117,7 @@
             // 
             this.lblUnidad.AutoSize = true;
             this.lblUnidad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUnidad.Location = new System.Drawing.Point(483, 306);
+            this.lblUnidad.Location = new System.Drawing.Point(323, 313);
             this.lblUnidad.Name = "lblUnidad";
             this.lblUnidad.Size = new System.Drawing.Size(86, 16);
             this.lblUnidad.TabIndex = 28;
@@ -122,7 +125,7 @@
             // 
             // btnstockMinima
             // 
-            this.btnstockMinima.Location = new System.Drawing.Point(482, 334);
+            this.btnstockMinima.Location = new System.Drawing.Point(326, 340);
             this.btnstockMinima.Name = "btnstockMinima";
             this.btnstockMinima.Size = new System.Drawing.Size(87, 20);
             this.btnstockMinima.TabIndex = 27;
@@ -131,7 +134,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(595, 308);
+            this.label4.Location = new System.Drawing.Point(522, 313);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 16);
             this.label4.TabIndex = 30;
@@ -151,7 +154,7 @@
             "PANADERIA",
             "REFRIJERADOS",
             "TORTILLERIA"});
-            this.cboxUnidad.Location = new System.Drawing.Point(598, 334);
+            this.cboxUnidad.Location = new System.Drawing.Point(525, 339);
             this.cboxUnidad.Name = "cboxUnidad";
             this.cboxUnidad.Size = new System.Drawing.Size(121, 21);
             this.cboxUnidad.TabIndex = 29;
@@ -173,6 +176,7 @@
             // btnModificar
             // 
             this.btnModificar.BackColor = System.Drawing.Color.Teal;
+            this.btnModificar.Enabled = false;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -187,6 +191,7 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Teal;
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -215,6 +220,7 @@
             // Salir
             // 
             this.Salir.BackColor = System.Drawing.Color.Teal;
+            this.Salir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Salir.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Salir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -229,23 +235,41 @@
             // 
             this.CampoRequerrido.ContainerControl = this;
             // 
-            // textBox1
+            // txtDevolucion
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(5, 334);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(81, 20);
-            this.textBox1.TabIndex = 36;
+            this.txtDevolucion.Enabled = false;
+            this.txtDevolucion.Location = new System.Drawing.Point(419, 340);
+            this.txtDevolucion.Name = "txtDevolucion";
+            this.txtDevolucion.Size = new System.Drawing.Size(100, 20);
+            this.txtDevolucion.TabIndex = 39;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(7, 306);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Producto_Id";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(416, 313);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 16);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Devolucion";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(809, 294);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(93, 20);
+            this.txtTotal.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(764, 294);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 16);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Total:";
             // 
             // ProductosForm
             // 
@@ -256,8 +280,10 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CancelButton = this.Salir;
             this.ClientSize = new System.Drawing.Size(914, 405);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtDevolucion);
             this.Controls.Add(this.Salir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
@@ -304,7 +330,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button Salir;
         private System.Windows.Forms.ErrorProvider CampoRequerrido;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtDevolucion;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTotal;
     }
 }

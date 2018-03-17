@@ -23,7 +23,6 @@ namespace RRAlmacen.Splash
         }
         private void tmr_Tick_1(object sender, EventArgs e)
         {
-            tmr.Stop();
             System.Threading.Thread run = new System.Threading.Thread(new System.Threading.ThreadStart(RunPrincipal));
             this.Close();
             run.SetApartmentState(System.Threading.ApartmentState.STA);
@@ -31,9 +30,8 @@ namespace RRAlmacen.Splash
         }
         private void RunPrincipal()
         {
-            Principal Login = new Principal();
+            RRAlmacen.Almacen.Usuarios.Login Login = new RRAlmacen.Almacen.Usuarios.Login();
             Login.ShowDialog();
-
         }
         private void Loading_Load(object sender, EventArgs e)
         {
@@ -42,6 +40,5 @@ namespace RRAlmacen.Splash
             tmr.Start();
             tmr.Tick += tmr_Tick_1;
         }
-
     }
 }
