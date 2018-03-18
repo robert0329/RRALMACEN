@@ -247,5 +247,27 @@ namespace RRAlmacen.Almacen.Usuarios
             }
         }
         #endregion
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection cnnInsert = new SqlConnection(RRSOFT.CnnStr);
+                cnnInsert.Open();
+
+                SqlCommand cmdInsert = new SqlCommand();
+                cmdInsert.Connection = cnnInsert;
+                cmdInsert.CommandText += "DELETE FROM Usuarios";
+                cmdInsert.CommandText += " WHERE USER_NAME= '" + txtUsuario.Text + "' AND USER_PASSWORD = '" + txtContraseña.Text + "' AND  NOMBRE = '" + txtNombre.Text + "'   ";
+                cmdInsert.ExecuteNonQuery();
+                MessageBox.Show("Se elimino con exito el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cnnInsert.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

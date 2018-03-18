@@ -184,5 +184,11 @@ namespace RRAlmacen
                 MessageBox.Show(exp.Message);
             }
         }
+
+        private void softWareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SoftWare rr = new SoftWare();
+            rr.ShowDialog();
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RRAlmacen.Almacen.Usuarios;
 using RRAlmacen.DAL;
 using RRAlmacen.Entidades;
 
@@ -269,7 +270,10 @@ namespace RRAlmacen.Almacen.Productos
         }
         private void ProductosForm_Load(object sender, EventArgs e)
         {
-            this.Text = "Productos";
+            this.Text = "Módulo de Control de Productos, Usuario: " +
+            Login._NOMBRE + " " +
+            Login._PATERNO + " " +
+            Login._MATERNO;
             this.lvProductos.DoubleClick += new System.EventHandler(this.lvProductos_DoubleClick);
             Encabezados();
             ReadData();

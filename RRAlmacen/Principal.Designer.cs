@@ -39,6 +39,9 @@
             this.respaldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearRespaldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.softWareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
@@ -54,7 +57,9 @@
             this.archivosToolStripMenuItem,
             this.mnuConsultas,
             this.mnuAdministrar,
-            this.respaldoToolStripMenuItem});
+            this.respaldoToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.empresaToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1136, 24);
@@ -128,6 +133,26 @@
             this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.restaurarToolStripMenuItem.Text = "Restaurar";
             this.restaurarToolStripMenuItem.Click += new System.EventHandler(this.restaurarToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            // 
+            // empresaToolStripMenuItem
+            // 
+            this.empresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.softWareToolStripMenuItem});
+            this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.empresaToolStripMenuItem.Text = "Nosotros";
+            // 
+            // softWareToolStripMenuItem
+            // 
+            this.softWareToolStripMenuItem.Name = "softWareToolStripMenuItem";
+            this.softWareToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.softWareToolStripMenuItem.Text = "SoftWare";
+            this.softWareToolStripMenuItem.Click += new System.EventHandler(this.softWareToolStripMenuItem_Click);
             // 
             // btnUsuarios
             // 
@@ -238,7 +263,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BackgroundImage = global::RRAlmacen.Properties.Resources.fondo_blanco_mullido_1053_302;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1136, 590);
             this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnBuscar);
@@ -247,7 +272,7 @@
             this.Controls.Add(this.btnConsultasVentas);
             this.Controls.Add(this.btnVneta);
             this.Controls.Add(this.menuStrip2);
-            this.IsMdiContainer = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RR-Almacen";
@@ -277,6 +302,9 @@
         private System.Windows.Forms.ToolStripMenuItem respaldoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearRespaldoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem softWareToolStripMenuItem;
     }
 }
 
