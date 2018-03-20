@@ -28,6 +28,7 @@ namespace RRAlmacen.Almacen.Productos
             public string _FOLIO = "";
             public string area = "";
         
+
         #endregion
 
         #region Validaciones
@@ -172,19 +173,61 @@ namespace RRAlmacen.Almacen.Productos
             productos.Precio = Convert.ToInt32(txtPrecio.Text);
             productos.Cantidad = Convert.ToInt32(txtCantidad.Text);
             productos.Stock_Minima = Convert.ToInt32(btnstockMinima.Text);
-            productos.Area = cboxUnidad.Text;
             productos.Devolucion = 0;
+            productos.Departamento_Id = Convert.ToInt32(cboxUnidad.SelectedValue);
             productos.Total_Unidad = Convert.ToInt32(txtCantidad.Text) - productos.Devolucion;
             productos.Total = Convert.ToInt32(productos.Total_Unidad) * Convert.ToInt32(productos.Precio);
-           
-            if (BLL.ProductosBLL.Save(productos) == true)
+            productos.IVA = 18;
+            try
             {
-                MessageBox.Show("Se ha guardado con Exito!!!");
-                ReadData();
-                CancelButton.PerformClick();
+                SqlConnection cnnInsert = new SqlConnection(RRSOFT.CnnStr);
+                cnnInsert.Open();
+
+                SqlCommand cmdInsert = new SqlCommand();
+                cmdInsert.Connection = cnnInsert;
+
+                //insertamos el registro padre
+                cmdInsert.CommandText = "INSERT INTO Productos(Desc_Producto, Producto_Id, Precio, Cantidad, Stock_Minima, Total, Total_Unidad, Devolucion, Departamento_Id, IVA) values('" + productos.Desc_Producto + "','" + varID_PRODUCTO + "','" + productos.Precio + "','" + productos.Cantidad + "','" + productos.Stock_Minima + "','" + productos.Cantidad * productos.Precio + "','" + (productos.Cantidad - productos.Devolucion) + "','" + productos.Devolucion + "','" + productos.Departamento_Id + "','" + 0.16 + "')";
+
+                cmdInsert.ExecuteNonQuery();
+
+
+                MessageBox.Show("Se Agrego Producto con Exito");
+                cnnInsert.Close();//varUnidad
+
+                ProductosForm _frmInsProductos = new ProductosForm();
+                _frmInsProductos.StartPosition = FormStartPosition.Manual;
+                _frmInsProductos.Show();
+
+                this.Close();
+
             }
-            else
-                MessageBox.Show("No Se ha guardado con Exito!!!");
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //Entidades.Productos productos = new Entidades.Productos();
+            //productos.Desc_Producto = txtNombre.Text;
+            //productos.Precio = Convert.ToInt32(txtPrecio.Text);
+            //productos.Cantidad = Convert.ToInt32(txtCantidad.Text);
+            //productos.Stock_Minima = Convert.ToInt32(btnstockMinima.Text);
+            //productos.Devolucion = 0;
+            //productos.Departamento_Id = Convert.ToInt32(cboxUnidad.SelectedValue);
+            //productos.Total_Unidad = Convert.ToInt32(txtCantidad.Text) - productos.Devolucion;
+            //productos.Total = Convert.ToInt32(productos.Total_Unidad) * Convert.ToInt32(productos.Precio);
+            //productos.IVA = 18;
+
+
+            //if (BLL.ProductosBLL.Save(productos) == true)
+            //{
+            //    MessageBox.Show("Se ha guardado con Exito!!!");
+            //    ReadData();
+            //    CancelButton.PerformClick();
+            //}
+            //else
+            //    MessageBox.Show("No Se ha guardado con Exito!!!");
 
         }
         private void Cerrar()
@@ -246,9 +289,6 @@ namespace RRAlmacen.Almacen.Productos
 
                         MessageBox.Show("(" + drReadData["NOMBRE"].ToString() + ")" + "  'Cantidad de Producto menor a Sera Necesario Surtir'");
                     }
-
-
-
                     I += 1;
                 }
                 txtTotal.Text = String.Format("{0:c}", total);
@@ -270,6 +310,7 @@ namespace RRAlmacen.Almacen.Productos
         }
         private void ProductosForm_Load(object sender, EventArgs e)
         {
+            dd();
             this.Text = "Módulo de Control de Productos, Usuario: " +
             Login._NOMBRE + " " +
             Login._PATERNO + " " +
@@ -291,10 +332,11 @@ namespace RRAlmacen.Almacen.Productos
             productos.Precio = Convert.ToInt32(txtPrecio.Text);
             productos.Cantidad = Convert.ToInt32(txtCantidad.Text);
             productos.Stock_Minima = Convert.ToInt32(btnstockMinima.Text);
-            productos.Area = cboxUnidad.Text;
+            productos.Departamento_Id = Convert.ToInt32(cboxUnidad.SelectedValue);
             productos.Devolucion = Convert.ToInt32(txtDevolucion.Text);
             productos.Total_Unidad = Convert.ToInt32(txtCantidad.Text) - productos.Devolucion;
             productos.Total = Convert.ToInt32(productos.Total_Unidad) * Convert.ToInt32(productos.Precio);
+            productos.IVA = 18;
 
             if (BLL.ProductosBLL.Save(productos) == true)
             {
@@ -306,7 +348,30 @@ namespace RRAlmacen.Almacen.Productos
                 MessageBox.Show("No Se ha Modificado con Exito!!!");
         }
         #endregion
+        public DataSet MostrarNombreGuardarID()
+        {
+            SqlConnection conn = new SqlConnection(RRSOFT.CnnStr);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            
+            cmd.Connection = conn;
+            
 
+            string sql = "Select Departamento_Id, Desc_Departamento from Departamentos";
+            cmd.CommandText = sql;
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Desc_Departamento");
+            return ds;
+        }
+        private void dd()
+        {
+            cboxUnidad .DataSource = MostrarNombreGuardarID().Tables[0];
+            cboxUnidad.DisplayMember = "Desc_Departamento";
+            cboxUnidad.ValueMember = "Departamento_Id";
+        }
+    
         #region Botones
         private void btnCancelar_Click(object sender, EventArgs e)
         {

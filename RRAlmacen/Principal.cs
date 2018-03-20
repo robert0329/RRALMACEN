@@ -61,7 +61,8 @@ namespace RRAlmacen
 
         private void btnVneta_Click(object sender, EventArgs e)
         {
-
+            Almacen.Ventas.Ventas vt = new Almacen.Ventas.Ventas();
+            vt.ShowDialog();
         }
 
         private void crearProductoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -15,10 +15,11 @@ namespace RRAlmacen.Entidades
         public double Precio { get; set; }
         public int Cantidad { get; set; }
         public int Stock_Minima { get; set; }
-        public string Area { get; set; }
+        public int Departamento_Id { get; set; }
         public int Devolucion { get; set; }
         public int Total_Unidad { get; set; }
         public int Total { get; set; }
+        public float IVA { get; set; }
                                            //public int Departamento_Id { get; set; }
                                            //public double ITBIS { get; set; }
 

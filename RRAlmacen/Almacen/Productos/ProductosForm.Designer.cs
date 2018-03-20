@@ -50,6 +50,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.IVA = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.CampoRequerrido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,17 +144,6 @@
             // cboxUnidad
             // 
             this.cboxUnidad.FormattingEnabled = true;
-            this.cboxUnidad.Items.AddRange(new object[] {
-            "ABARROTES",
-            "BEBIDAS",
-            "LACTEOS",
-            "BOTANA-FRITURA",
-            "CEREALES",
-            "TECNOLOGIA",
-            "LIMPIEZA",
-            "PANADERIA",
-            "REFRIJERADOS",
-            "TORTILLERIA"});
             this.cboxUnidad.Location = new System.Drawing.Point(525, 339);
             this.cboxUnidad.Name = "cboxUnidad";
             this.cboxUnidad.Size = new System.Drawing.Size(121, 21);
@@ -271,6 +261,14 @@
             this.label6.TabIndex = 42;
             this.label6.Text = "Total:";
             // 
+            // IVA
+            // 
+            this.IVA.Enabled = false;
+            this.IVA.Location = new System.Drawing.Point(809, 320);
+            this.IVA.Name = "IVA";
+            this.IVA.Size = new System.Drawing.Size(93, 20);
+            this.IVA.TabIndex = 43;
+            // 
             // ProductosForm
             // 
             this.AcceptButton = this.btnAceptar;
@@ -280,6 +278,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CancelButton = this.Salir;
             this.ClientSize = new System.Drawing.Size(914, 405);
+            this.Controls.Add(this.IVA);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label5);
@@ -334,5 +333,6 @@
         private System.Windows.Forms.TextBox txtDevolucion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox IVA;
     }
 }

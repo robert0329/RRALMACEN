@@ -19,6 +19,7 @@ namespace RRAlmacen.Almacen.Productos
             InitializeComponent();
         }
         public string varID_PRODUCTO = "";
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ReadData(txtDESC_PRODUCTO.Text);
@@ -78,7 +79,6 @@ namespace RRAlmacen.Almacen.Productos
         {
             try
             {
-                //string selectSQL = @"Data Source=DESKTOP-A3NC6RU\SQLEXPRESS;Initial Catalog=RRSOFTWARE;Integrated Security=True";
                 SqlConnection cnnReadData = new SqlConnection(RRSOFT.CnnStr);
 
                 if (cnnReadData.State == ConnectionState.Open)
@@ -90,8 +90,7 @@ namespace RRAlmacen.Almacen.Productos
                 SqlCommand cmdReadData = new SqlCommand("SELECT Producto_Id," +
                     " Desc_Producto," +
                     " Cantidad,Precio,Devolucion,Total_Unidad" +
-                    " FROM Productos" +
-                    " WHERE Desc_Producto like '%" + prmDESC_PRODUCTO + "%'", cnnReadData);
+                    " FROM Productos", cnnReadData);
 
                 SqlDataReader drReadData;
                 drReadData = cmdReadData.ExecuteReader();
