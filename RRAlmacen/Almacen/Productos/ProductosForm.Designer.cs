@@ -51,6 +51,8 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.IVA = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Folio = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.CampoRequerrido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(118, 313);
+            this.label3.Location = new System.Drawing.Point(119, 313);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 24;
@@ -92,7 +94,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(121, 340);
+            this.txtPrecio.Location = new System.Drawing.Point(122, 340);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(73, 20);
             this.txtPrecio.TabIndex = 23;
@@ -101,7 +103,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCantidad.Location = new System.Drawing.Point(197, 313);
+            this.lblCantidad.Location = new System.Drawing.Point(198, 313);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(62, 16);
             this.lblCantidad.TabIndex = 26;
@@ -109,7 +111,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(200, 340);
+            this.txtCantidad.Location = new System.Drawing.Point(201, 340);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(120, 20);
             this.txtCantidad.TabIndex = 25;
@@ -118,7 +120,7 @@
             // 
             this.lblUnidad.AutoSize = true;
             this.lblUnidad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUnidad.Location = new System.Drawing.Point(323, 313);
+            this.lblUnidad.Location = new System.Drawing.Point(324, 313);
             this.lblUnidad.Name = "lblUnidad";
             this.lblUnidad.Size = new System.Drawing.Size(86, 16);
             this.lblUnidad.TabIndex = 28;
@@ -126,7 +128,7 @@
             // 
             // btnstockMinima
             // 
-            this.btnstockMinima.Location = new System.Drawing.Point(326, 340);
+            this.btnstockMinima.Location = new System.Drawing.Point(327, 340);
             this.btnstockMinima.Name = "btnstockMinima";
             this.btnstockMinima.Size = new System.Drawing.Size(87, 20);
             this.btnstockMinima.TabIndex = 27;
@@ -135,7 +137,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(522, 313);
+            this.label4.Location = new System.Drawing.Point(523, 313);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 16);
             this.label4.TabIndex = 30;
@@ -144,7 +146,7 @@
             // cboxUnidad
             // 
             this.cboxUnidad.FormattingEnabled = true;
-            this.cboxUnidad.Location = new System.Drawing.Point(525, 339);
+            this.cboxUnidad.Location = new System.Drawing.Point(526, 339);
             this.cboxUnidad.Name = "cboxUnidad";
             this.cboxUnidad.Size = new System.Drawing.Size(121, 21);
             this.cboxUnidad.TabIndex = 29;
@@ -228,7 +230,7 @@
             // txtDevolucion
             // 
             this.txtDevolucion.Enabled = false;
-            this.txtDevolucion.Location = new System.Drawing.Point(419, 340);
+            this.txtDevolucion.Location = new System.Drawing.Point(420, 340);
             this.txtDevolucion.Name = "txtDevolucion";
             this.txtDevolucion.Size = new System.Drawing.Size(100, 20);
             this.txtDevolucion.TabIndex = 39;
@@ -237,7 +239,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(416, 313);
+            this.label5.Location = new System.Drawing.Point(417, 313);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 16);
             this.label5.TabIndex = 40;
@@ -269,6 +271,23 @@
             this.IVA.Size = new System.Drawing.Size(93, 20);
             this.IVA.TabIndex = 43;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(651, 313);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Producto Id";
+            // 
+            // Folio
+            // 
+            this.Folio.Location = new System.Drawing.Point(654, 340);
+            this.Folio.Name = "Folio";
+            this.Folio.Size = new System.Drawing.Size(73, 20);
+            this.Folio.TabIndex = 45;
+            // 
             // ProductosForm
             // 
             this.AcceptButton = this.btnAceptar;
@@ -278,6 +297,8 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CancelButton = this.Salir;
             this.ClientSize = new System.Drawing.Size(914, 405);
+            this.Controls.Add(this.Folio);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.IVA);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTotal);
@@ -334,5 +355,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox IVA;
+        private System.Windows.Forms.TextBox Folio;
+        private System.Windows.Forms.Label label2;
     }
 }

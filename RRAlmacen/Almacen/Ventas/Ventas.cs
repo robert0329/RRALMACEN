@@ -416,8 +416,6 @@ namespace RRAlmacen.Almacen.Ventas
                 cmdInsert.CommandText = "INSERT INTO Detalle_Ventas (Producto_Id,FOLIO,Cantidad,Precio,IVA) SELECT Producto_Id," + varFolio + ",Cantidad,Precio,IVA FROM Temp_Ventas WHERE User_Name ='" + prmUSER_LOGIN + "'";
                 cmdInsert.ExecuteNonQuery();
 
-
-             //   cmdInsert.CommandText = "UPDATE Productos SET Producto_Id = Temp_Ventas.Producto_Id FROM Productos INNER JOIN Temp_Ventas ON(Productos.Cantidad = Productos.Cantidad - Temp_Ventas.Cantidad) WHERE Temp_Ventas.User_Name = '" + prmUSER_LOGIN + "';";
                 cmdInsert.CommandText = "UPDATE Productos SET Producto_Id = cat.Producto_Id FROM Productos prod JOIN Temp_Ventas cat ON(prod.Cantidad = prod.Cantidad - cat.Cantidad) WHERE cat.User_Name = '" + prmUSER_LOGIN + "'";
 
                 cmdInsert.ExecuteNonQuery();
