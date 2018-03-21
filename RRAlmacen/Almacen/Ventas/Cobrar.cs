@@ -121,9 +121,7 @@ namespace RRAlmacen.Almacen.Ventas
                     "------------------------------\n";
 
                 string varSQL =
-                    "SELECT LEFT(Desc_Producto,10) as Desc_Producto," +
-                    " Cantidad,Precio,Total" +
-                    " FROM Ventas WHERE FOLIO=" + prmFOLIO + "";
+                    "SELECT FOLIO,Total FROM Ventas WHERE FOLIO=" + prmFOLIO + "";
 
                 string DetalleTicket = "";
                 double varGranTotal = 0;
@@ -136,17 +134,12 @@ namespace RRAlmacen.Almacen.Ventas
                 while (drTicket.Read())
                 {
                     DetalleTicket +=
-                        drTicket["Desc_Producto"].ToString() + "   " +
-                        drTicket["Cantidad"].ToString() + "   " +
-                        String.Format("{0:c}",
-                        drTicket["Precio"]) + "   " +
-                        String.Format("{0:c}",
-                        drTicket["Total"]) + "\n";
+                        drTicket["Total"];
                     varGranTotal += (double)drTicket["Total"];
                 }
 
                 DetalleTicket += "------------------------------\n" +
-                    "TOTAL: " + String.Format("{0:c}", varGranTotal);
+                    "Total: " + String.Format("{0:c}", varGranTotal);
                 Ticket += DetalleTicket;
 
                 mPrintDocument _mPrintDocument = new mPrintDocument(Ticket);

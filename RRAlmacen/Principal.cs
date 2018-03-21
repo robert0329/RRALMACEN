@@ -191,5 +191,11 @@ namespace RRAlmacen
             SoftWare rr = new SoftWare();
             rr.ShowDialog();
         }
+
+        private void appConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Almacen.Database.AppConfig rr = new Almacen.Database.AppConfig();
+            rr.ShowDialog();
+        }
     }
 }

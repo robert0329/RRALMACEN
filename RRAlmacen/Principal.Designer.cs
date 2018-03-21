@@ -48,6 +48,7 @@
             this.btnReporte = new System.Windows.Forms.Button();
             this.btnConsultasVentas = new System.Windows.Forms.Button();
             this.btnVneta = new System.Windows.Forms.Button();
+            this.appConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +115,8 @@
             // 
             this.respaldoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearRespaldoToolStripMenuItem,
-            this.restaurarToolStripMenuItem});
+            this.restaurarToolStripMenuItem,
+            this.appConfigToolStripMenuItem});
             this.respaldoToolStripMenuItem.Enabled = false;
             this.respaldoToolStripMenuItem.Name = "respaldoToolStripMenuItem";
             this.respaldoToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
@@ -150,7 +152,7 @@
             // softWareToolStripMenuItem
             // 
             this.softWareToolStripMenuItem.Name = "softWareToolStripMenuItem";
-            this.softWareToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.softWareToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.softWareToolStripMenuItem.Text = "SoftWare";
             this.softWareToolStripMenuItem.Click += new System.EventHandler(this.softWareToolStripMenuItem_Click);
             // 
@@ -257,6 +259,13 @@
             this.btnVneta.UseVisualStyleBackColor = false;
             this.btnVneta.Click += new System.EventHandler(this.btnVneta_Click);
             // 
+            // appConfigToolStripMenuItem
+            // 
+            this.appConfigToolStripMenuItem.Name = "appConfigToolStripMenuItem";
+            this.appConfigToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.appConfigToolStripMenuItem.Text = "AppConfig";
+            this.appConfigToolStripMenuItem.Click += new System.EventHandler(this.appConfigToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -305,6 +314,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem softWareToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appConfigToolStripMenuItem;
     }
 }
 

@@ -22,7 +22,7 @@ namespace RRAlmacen.Almacen.Database
         public static string _RFC = "";
         private void btnOK_Click(object sender, EventArgs e)
         {
-            //  txtFileName.Text = "C:\\proTienda\\proTienda\\dbTienda.mdb";
+              txtFileName.Text = @"C:\Users\chico\OneDrive\Escritorio\Almacen\RRAlmacen\RRAlmacen\Almacen\Database\eso.mdb";
 
             try
             {

@@ -17,12 +17,7 @@ namespace RRAlmacen.DAL
         {
 
         }
-        public SqlConnection establecerConexion()
-        {
-            string cs = "Data Source=NOMBRE_SERVER;Initial Catalog=NOMBRE_BD;Integrated Security=True";
-            SqlConnection con = new SqlConnection(cs);
-            return con;
-        }
+        
         public static string CnnStr
         {
             get

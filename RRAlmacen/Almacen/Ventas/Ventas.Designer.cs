@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Iva = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtGRAND_TOTAL = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblIVA = new System.Windows.Forms.Label();
             this.txtCANTIDAD = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Iva = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             // 
             this.groupBox1.Controls.Add(this.Iva);
             this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Controls.Add(this.txtGRAND_TOTAL);
+            this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lblIVA);
             this.groupBox1.Controls.Add(this.txtCANTIDAD);
@@ -67,6 +67,14 @@
             this.groupBox1.Size = new System.Drawing.Size(772, 100);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
+            // 
+            // Iva
+            // 
+            this.Iva.Location = new System.Drawing.Point(643, 33);
+            this.Iva.Name = "Iva";
+            this.Iva.ReadOnly = true;
+            this.Iva.Size = new System.Drawing.Size(100, 20);
+            this.Iva.TabIndex = 14;
             // 
             // btnCancelar
             // 
@@ -82,13 +90,13 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtGRAND_TOTAL
+            // txtTotal
             // 
-            this.txtGRAND_TOTAL.Location = new System.Drawing.Point(643, 63);
-            this.txtGRAND_TOTAL.Name = "txtGRAND_TOTAL";
-            this.txtGRAND_TOTAL.ReadOnly = true;
-            this.txtGRAND_TOTAL.Size = new System.Drawing.Size(100, 20);
-            this.txtGRAND_TOTAL.TabIndex = 12;
+            this.txtTotal.Location = new System.Drawing.Point(643, 63);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtTotal.TabIndex = 12;
             // 
             // label5
             // 
@@ -231,14 +239,6 @@
             this.menuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.menuPrincipalToolStripMenuItem.Text = "Menu Principal";
             // 
-            // Iva
-            // 
-            this.Iva.Location = new System.Drawing.Point(643, 33);
-            this.Iva.Name = "Iva";
-            this.Iva.ReadOnly = true;
-            this.Iva.Size = new System.Drawing.Size(100, 20);
-            this.Iva.TabIndex = 14;
-            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,7 +267,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtGRAND_TOTAL;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblIVA;
         private System.Windows.Forms.TextBox txtCANTIDAD;

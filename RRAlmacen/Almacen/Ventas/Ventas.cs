@@ -152,6 +152,7 @@ namespace RRAlmacen.Almacen.Ventas
                 MessageBox.Show(ex.Message, "Error");
             }
         }
+        int tt = 0;
         void ReadData(string prmUSER_NAME, int prmID_CAJA)
         {
             StringBuilder Version = new StringBuilder();
@@ -183,9 +184,9 @@ namespace RRAlmacen.Almacen.Ventas
                     lvVenta.Items[I].SubItems.Add(drReadData["Precio"].ToString());
                     lvVenta.Items[I].SubItems.Add(String.Format("{0:c}", drReadData["Total"]));
 
-
+                    tt = Convert.ToInt32(drReadData["Total"]);
                     varGRAND_TOTAL += Convert.ToDouble(drReadData["Total"]);
-                    varIVA += Convert.ToDouble(Version.ToString()) * ((Convert.ToDouble(drReadData["TOTAL"])));
+                    varIVA += Convert.ToDouble(Version.ToString()) * ((Convert.ToDouble(drReadData["Total"])));
                     
                     I += 1;
                 }
@@ -193,7 +194,7 @@ namespace RRAlmacen.Almacen.Ventas
                 cmdReadData.Dispose();
                 cnnReadData.Close();
                 cnnReadData.Dispose();
-                txtGRAND_TOTAL.Text = String.Format("{0:c}", varGRAND_TOTAL);
+                txtTotal.Text = String.Format("{0:c}", varGRAND_TOTAL);
                 Iva.Text = String.Format("{0:c}", varIVA);
             }
             catch (Exception ex)
@@ -211,7 +212,7 @@ namespace RRAlmacen.Almacen.Ventas
                 SqlConnection cnnTempVentas = new SqlConnection(RRSOFT.CnnStr);
                 if (GetSale(prmUSER_LOGIN, prmID_CAJA, prmID_PRODUCTO) == 0)
                 {
-                    varSQL = "INSERT INTO Temp_Ventas(User_Name,Producto_Id,Cantidad,Precio)VALUES('" + prmUSER_LOGIN + "','" + prmID_PRODUCTO + "'," + prmCANTIDAD + "," + prmPRECIO + ")";
+                    varSQL = "INSERT INTO Temp_Ventas(User_Name,Producto_Id,Cantidad,Precio, IVA)VALUES('" + prmUSER_LOGIN + "','" + prmID_PRODUCTO + "'," + prmCANTIDAD + "," + prmPRECIO + "," + Iva.Text+ ")";
 
                 }
 
@@ -399,8 +400,8 @@ namespace RRAlmacen.Almacen.Ventas
                 cmdInsert.Connection = cnnInsert;
 
                 //insertamos el registro padre
-                cmdInsert.CommandText = "INSERT INTO Ventas (User_Name,Caja_Id,Fecha) " +
-                                        "VALUES('" + prmUSER_LOGIN + "'," + prmID_CAJA + ",GETDATE())";
+                cmdInsert.CommandText = "INSERT INTO Ventas (User_Name,Caja_Id,Total,Fecha) " +
+                                        "VALUES('" + prmUSER_LOGIN + "','" + prmID_CAJA + "'," + tt + ",GETDATE())";
                 
                                                 
 

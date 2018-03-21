@@ -128,6 +128,12 @@
     <Compile Include="Almacen\Productos\BuscarProducto.Designer.cs">
       <DependentUpon>BuscarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\Productos\Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Productos\Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Almacen\Productos\ProductosForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     <EmbeddedResource Include="Almacen\Productos\BuscarProducto.resx">
       <DependentUpon>BuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Productos\Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Productos\ProductosForm.resx">
       <DependentUpon>ProductosForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +254,13 @@
     <None Include="Resources\fondo-blanco-mullido_1053-302.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Almacen\Database\eso.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Almacen\Database\eso_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>eso.mdf</DependentUpon>
+    </Content>
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
