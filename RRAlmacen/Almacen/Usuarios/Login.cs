@@ -18,8 +18,7 @@ namespace RRAlmacen.Almacen.Usuarios
         {
             InitializeComponent();
         }
-
-        Principal Menu = new Principal();
+        
 
         public static string _USER_NAME = "";
         public static string _PATERNO = "";

@@ -14,6 +14,8 @@ using RRAlmacen.DAL;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
+using RRAlmacen.Almacen.Categorias;
+using RRAlmacen.Almacen.Ingresos;
 
 namespace RRAlmacen
 {
@@ -30,7 +32,7 @@ namespace RRAlmacen
             //pp.MdiParent = this;
             //pp.Show();
 
-            Almacen.Productos.ProductosForm _frmproducto = new Almacen.Productos.ProductosForm();
+            Almacen.Productos.Productos _frmproducto = new Almacen.Productos.Productos();
             _frmproducto.StartPosition = FormStartPosition.CenterScreen;
             _frmproducto.ShowDialog();
         }
@@ -67,7 +69,7 @@ namespace RRAlmacen
 
         private void crearProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Almacen.Productos.ProductosForm _frmproducto = new Almacen.Productos.ProductosForm();
+            Almacen.Productos.Productos _frmproducto = new Almacen.Productos.Productos();
             _frmproducto.StartPosition = FormStartPosition.CenterScreen;
             _frmproducto.ShowDialog();
         }
@@ -137,7 +139,7 @@ namespace RRAlmacen
 
                 //esto puede ser un método aparte para ejecutar comandos SQL---------------
                 SqlCommand command;
-                command = new SqlCommand(@"backup database RRSOFTWARE to disk ='c:\ Respaldo\resp.bak' with init,stats=10", connect);
+                command = new SqlCommand(@"backup database RRSOFTWARE to disk ='C:\Users\chico\OneDrive\Escritorio\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\Base de Datos\dbventas.bak' with init,stats=10", connect);
                 command.ExecuteNonQuery();
                 //-------------------------------------------------------------------------
 
@@ -196,6 +198,42 @@ namespace RRAlmacen
         {
             Almacen.Database.AppConfig rr = new Almacen.Database.AppConfig();
             rr.ShowDialog();
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Categorias cc = new Categorias();
+            cc.ShowDialog(); 
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Almacen.Ingresos.Proveedores pr = new Almacen.Ingresos.Proveedores();
+            pr.ShowDialog();
+        }
+
+        private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Almacen.Ingresos.Ingresos ii = new Almacen.Ingresos.Ingresos();
+            ii.ShowDialog();
+        }
+
+        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Categorias ct = new Categorias();
+            ct.ShowDialog();
+        }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Articulos ar = new Articulos();
+            ar.ShowDialog();
+        }
+
+        private void presentacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Presentacion pr = new Presentacion();
+            pr.ShowDialog();
         }
     }
 }

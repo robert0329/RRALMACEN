@@ -398,19 +398,13 @@ namespace RRAlmacen.Almacen.Ventas
                 cnnInsert.Open();
                 SqlCommand cmdInsert = new SqlCommand();
                 cmdInsert.Connection = cnnInsert;
-
-                //insertamos el registro padre
+                
                 cmdInsert.CommandText = "INSERT INTO Ventas (User_Name,Caja_Id,Total,Fecha) " +
                                         "VALUES('" + prmUSER_LOGIN + "','" + prmID_CAJA + "'," + tt + ",GETDATE())";
-                
-                                                
-
-                // MADAS 2
-
-
+               
                 cmdInsert.ExecuteNonQuery();
 
-                //obtenemos el autonumerico
+              
                 cmdInsert.CommandText = "SELECT @@IDENTITY";
                 varFolio = Convert.ToInt32(cmdInsert.ExecuteScalar());
                 

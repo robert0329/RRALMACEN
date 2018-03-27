@@ -116,11 +116,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Almacen\Ingresos\Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Almacen\Database\AppConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Almacen\Database\AppConfig.Designer.cs">
       <DependentUpon>AppConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Articulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Articulos.Designer.cs">
+      <DependentUpon>Articulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.Designer.cs">
+      <DependentUpon>FrmVistaArticulo_Ingreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.Designer.cs">
+      <DependentUpon>FrmVistaProveedor_Ingreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Ingresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Ingresos.Designer.cs">
+      <DependentUpon>Ingresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Presentacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Presentacion.Designer.cs">
+      <DependentUpon>Presentacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\Proveedores.Designer.cs">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\VistaCategoria_Articulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Ingresos\VistaCategoria_Articulo.Designer.cs">
+      <DependentUpon>VistaCategoria_Articulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Productos\BuscarProducto.cs">
       <SubType>Form</SubType>
@@ -133,12 +181,6 @@
     </Compile>
     <Compile Include="Almacen\Productos\Productos.Designer.cs">
       <DependentUpon>Productos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\Productos\ProductosForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Productos\ProductosForm.Designer.cs">
-      <DependentUpon>ProductosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Usuarios\Login.cs">
       <SubType>Form</SubType>
@@ -166,6 +208,16 @@
     </Compile>
     <Compile Include="BLL\ProductosBLL.cs" />
     <Compile Include="BLL\UsuariosBLL.cs" />
+    <Compile Include="CapaDeDatos\DArticulo.cs" />
+    <Compile Include="CapaDeDatos\DCategoria.cs" />
+    <Compile Include="CapaDeDatos\DPresentacion.cs" />
+    <Compile Include="CapaDeDatos\DProductos.cs" />
+    <Compile Include="CapaDeDatos\DProveedor.cs" />
+    <Compile Include="CapaNegocios\NArticulo.cs" />
+    <Compile Include="CapaNegocios\NCategoria.cs" />
+    <Compile Include="CapaNegocios\NPresentacion.cs" />
+    <Compile Include="CapaNegocios\NProductos.cs" />
+    <Compile Include="CapaNegocios\NProveedor.cs" />
     <Compile Include="DAL\RRSOFT.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
@@ -192,17 +244,38 @@
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="Almacen\Ingresos\Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Database\AppConfig.resx">
       <DependentUpon>AppConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\Articulos.resx">
+      <DependentUpon>Articulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.resx">
+      <DependentUpon>FrmVistaArticulo_Ingreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.resx">
+      <DependentUpon>FrmVistaProveedor_Ingreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\Ingresos.resx">
+      <DependentUpon>Ingresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\Presentacion.resx">
+      <DependentUpon>Presentacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\Proveedores.resx">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Ingresos\VistaCategoria_Articulo.resx">
+      <DependentUpon>VistaCategoria_Articulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Productos\BuscarProducto.resx">
       <DependentUpon>BuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Productos\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Productos\ProductosForm.resx">
-      <DependentUpon>ProductosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Usuarios\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -254,13 +327,6 @@
     <None Include="Resources\fondo-blanco-mullido_1053-302.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Almacen\Database\eso.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Almacen\Database\eso_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>eso.mdf</DependentUpon>
-    </Content>
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
