@@ -87,8 +87,6 @@ namespace CapasDeDatos
 
                 SqlParameter ParNombre = new SqlParameter();
                 ParNombre.ParameterName = "@nombre";
-                ParNombre.SqlDbType = SqlDbType.VarChar;
-                ParNombre.Size = 50;
                 ParNombre.Value = Categoria.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
 

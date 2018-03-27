@@ -51,12 +51,7 @@ namespace RRAlmacen.Almacen.Ingresos
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Ingresos form = Ingresos.GetInstancia();
-            string par1, par2;
-            par1 = Convert.ToString(this.dataListado.CurrentRow.Cells["idarticulo"].Value);
-            par2 = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            form.setArticulo(par1, par2);
-            this.Hide();
+           
         }
     }
 }

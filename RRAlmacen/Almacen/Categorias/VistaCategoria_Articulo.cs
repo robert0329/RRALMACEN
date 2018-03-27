@@ -25,14 +25,14 @@ namespace RRAlmacen.Almacen.Ingresos
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.dataListado.DoubleClick += new EventHandler(this.dataListadoo_CellDoubleClick);
+        }
+        private void dataListadoo_CellDoubleClick(object sender, EventArgs e)
+        {
             Articulos form = Articulos.GetInstancia();
-            string par1, par2;
-            par1 = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
-            par2 = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            form.setCategoria(par1, par2);
+            //form.setCategoria(Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value), Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value));
             this.Hide();
         }
-
         private void VistaCategoria_Articulo_Load(object sender, EventArgs e)
         {
             this.Mostrar();

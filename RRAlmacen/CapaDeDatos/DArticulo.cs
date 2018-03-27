@@ -1,4 +1,4 @@
-﻿using RRAlmacen.DAL;
+﻿    using RRAlmacen.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +15,7 @@ namespace RRAlmacen.CapaDeDatos
         private string _Codigo;
         private string _Nombre;
         private string _Descripcion;
+        private byte[] _Imagen;
         private int _Idcategoria;
         private int _Idpresentacion;
         private string _TextoBuscar;
@@ -39,6 +40,11 @@ namespace RRAlmacen.CapaDeDatos
             get { return _Descripcion; }
             set { _Descripcion = value; }
         }
+        public byte[] Imagen
+        {
+            get { return _Imagen; }
+            set { _Imagen = value; }
+        }
         public int Idcategoria
         {
             get { return _Idcategoria; }
@@ -61,12 +67,13 @@ namespace RRAlmacen.CapaDeDatos
 
         }
 
-        public DArticulo(int idarticulo, string codigo, string nombre, string descripcion,  int idcategoria, int idpresentacion, string textobuscar)
+        public DArticulo(int idarticulo, string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string textobuscar)
         {
             this.Idarticulo = idarticulo;
             this.Codigo = codigo;
             this.Nombre = nombre;
             this.Descripcion = descripcion;
+            this.Imagen = imagen;
             this.Idcategoria = idcategoria;
             this.Idpresentacion = idpresentacion;
             this.TextoBuscar = textobuscar;
@@ -116,7 +123,12 @@ namespace RRAlmacen.CapaDeDatos
                 ParDescripcion.Size = 1024;
                 ParDescripcion.Value = Articulo.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
-                
+
+                SqlParameter ParImagen = new SqlParameter();
+                ParImagen.ParameterName = "@imagen";
+                ParImagen.SqlDbType = SqlDbType.Image;
+                ParImagen.Value = Articulo.Imagen;
+                SqlCmd.Parameters.Add(ParImagen);
 
                 SqlParameter ParIdcategoria = new SqlParameter();
                 ParIdcategoria.ParameterName = "@idcategoria";
@@ -179,6 +191,23 @@ namespace RRAlmacen.CapaDeDatos
 
                 SqlParameter ParNombre = new SqlParameter();
                 ParNombre.ParameterName = "@nombre";
+                ParNombre.SqlDbType = SqlDbType.VarChar;
+                ParNombre.Size = 50;
+                ParNombre.Value = Articulo.Nombre;
+                SqlCmd.Parameters.Add(ParNombre);
+
+                SqlParameter ParDescripcion = new SqlParameter();
+                ParDescripcion.ParameterName = "@descripcion";
+                ParDescripcion.SqlDbType = SqlDbType.VarChar;
+                ParDescripcion.Size = 1024;
+                ParDescripcion.Value = Articulo.Descripcion;
+                SqlCmd.Parameters.Add(ParDescripcion);
+
+                SqlParameter ParImagen = new SqlParameter();
+                ParImagen.ParameterName = "@imagen";
+                ParImagen.SqlDbType = SqlDbType.Image;
+                ParImagen.Value = Articulo.Imagen;
+                SqlCmd.Parameters.Add(ParImagen);
 
                 SqlParameter ParIdcategoria = new SqlParameter();
                 ParIdcategoria.ParameterName = "@idcategoria";

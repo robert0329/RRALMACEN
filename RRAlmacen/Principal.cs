@@ -25,6 +25,12 @@ namespace RRAlmacen
         {
             InitializeComponent();
         }
+        private int childFormNumber = 0;
+
+        public string Idtrabajador = "";
+        public string Apellidos = "";
+        public string Nombre = "";
+        public string Acceso = "";
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
@@ -32,23 +38,17 @@ namespace RRAlmacen
             //pp.MdiParent = this;
             //pp.Show();
 
-            Almacen.Productos.Productos _frmproducto = new Almacen.Productos.Productos();
-            _frmproducto.StartPosition = FormStartPosition.CenterScreen;
-            _frmproducto.ShowDialog();
+            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Almacen.Productos.BuscarProducto _frmproducto = new Almacen.Productos.BuscarProducto();
-            _frmproducto.StartPosition = FormStartPosition.CenterScreen;
-            _frmproducto.ShowDialog();
+            
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            Almacen.Usuarios.RegistroUsuarios _frmproducto = new Almacen.Usuarios.RegistroUsuarios();
-            _frmproducto.StartPosition = FormStartPosition.CenterScreen;
-            _frmproducto.ShowDialog();
+            
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
@@ -63,35 +63,46 @@ namespace RRAlmacen
 
         private void btnVneta_Click(object sender, EventArgs e)
         {
-            Almacen.Ventas.Ventas vt = new Almacen.Ventas.Ventas();
-            vt.ShowDialog();
+            
         }
 
         private void crearProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Almacen.Productos.Productos _frmproducto = new Almacen.Productos.Productos();
-            _frmproducto.StartPosition = FormStartPosition.CenterScreen;
-            _frmproducto.ShowDialog();
+           
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            this.Text = "Módulo de Control de Ventas, Usuario: " +
-            Login._NOMBRE + " " +
-            Login._PATERNO + " " +
-            Login._MATERNO;
-            mnuVentas.Enabled = Login._VENTAS;
-            respaldoToolStripMenuItem.Enabled = Login._ADMINISTRAR;
-            mnuAdministrar.Enabled = Login._ADMINISTRAR;
-            mnuConsultas.Enabled = Login._CONSULTAS;
+            if (Acceso == "Administrador")
+            {
+                respaldoToolStripMenuItem.Enabled = true;
+                mnuAdministrar.Enabled = true;
+                mnuConsultas.Enabled = true;
 
 
-            btnVneta.Enabled = Login._VENTAS;
-            btnConsultasVentas.Enabled = Login._CONSULTAS;
-            btnProductos.Enabled = Login._CATALOGO;
-            btnUsuarios.Enabled = Login._ADMINISTRAR;
+                btnVneta.Enabled = true;
+                btnConsultasVentas.Enabled = true;
+                btnProductos.Enabled = true;
+                btnUsuarios.Enabled = true;
+
+            }
+            else if (Acceso == "Vendedor")
+            {
+
+
+            }
+            else if (Acceso == "Almacenero")
+            {
+
+
+            }
+            else
+            {
+
+
+            }
         }
-
+        
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Threading.Thread run = new System.Threading.Thread(new System.Threading.ThreadStart(RunLogin));
@@ -234,6 +245,12 @@ namespace RRAlmacen
         {
             Presentacion pr = new Presentacion();
             pr.ShowDialog();
+        }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Trabajadores tt = new Trabajadores();
+            tt.ShowDialog();
         }
     }
 }

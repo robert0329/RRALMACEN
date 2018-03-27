@@ -1,4 +1,5 @@
-﻿using RRAlmacen.DAL;
+﻿using RRAlmacen.CapaNegocios;
+using RRAlmacen.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,90 +19,37 @@ namespace RRAlmacen.Almacen.Usuarios
         {
             InitializeComponent();
         }
-        
-
-        public static string _USER_NAME = "";
-        public static string _PATERNO = "";
-        public static string _MATERNO = "";
-        public static string _NOMBRE = "";
-        public static bool _VENTAS = false;
-        public static bool _ADMINISTRAR = false;
-        public static bool _REPORTES = false;
-        public static bool _FACTURACION = false;
-        public static bool _CONSULTAS = false;
-        public static bool _CATALOGO = false;
-        private DataTable fnLogin(string prmUSER_NAME, string prmPASSWORD)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-
-                string Query = " SELECT *";
-                Query += " FROM Usuarios ";
-                Query += " WHERE USER_NAME='" + prmUSER_NAME + "' ";
-                Query += " AND USER_PASSWORD ='" + prmPASSWORD + "'";
-
-                using (SqlConnection connection = new SqlConnection(RRSOFT.CnnStr))
-                using (SqlCommand command = new SqlCommand(Query, connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                {
-                    adapter.Fill(dt);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return dt;
-        }
+        DataTable Datos;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.Trim() == "" || txtContraseña.Text.Trim() == "")
+             Datos = NTrabajador.Login(this.txtUsuario.Text, this.txtContraseña.Text);
+            
+            if (Datos.Rows.Count == 0)
             {
-                MessageBox.Show("El Usuario o la Contraseña son incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("NO Tiene Acceso al Sistema", "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (fnLogin(txtUsuario.Text, txtContraseña.Text).Rows.Count > 0)
-                {
-
-                    _USER_NAME = fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["USER_NAME"].ToString();
-                    _PATERNO = fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["PATERNO"].ToString();
-                    _MATERNO = fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["MATERNO"].ToString();
-                    _NOMBRE = fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["NOMBRE"].ToString();
-
-                    _VENTAS = bool.Parse((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["VENTAS"].ToString()));
-                    _ADMINISTRAR = Convert.ToBoolean((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["ADMINISTRAR"].ToString()));
-                    _REPORTES = Convert.ToBoolean((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["REPORTES"].ToString()));
-                    _FACTURACION = Convert.ToBoolean((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["FACTURACION"].ToString()));
-                    _CONSULTAS = Convert.ToBoolean((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["CONSULTAS"].ToString()));
-                    _CATALOGO = Convert.ToBoolean((fnLogin(txtUsuario.Text, txtContraseña.Text).Rows[0]["CATALOGOS"].ToString()));
-
-                    System.Threading.Thread run = new System.Threading.Thread(new System.Threading.ThreadStart(RunPrincipal));
-                    this.Close();
-                    run.SetApartmentState(System.Threading.ApartmentState.STA);
-                    run.Start();
-                }
-                else
-                {
-                    MessageBox.Show("El Usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
+                System.Threading.Thread run = new System.Threading.Thread(new System.Threading.ThreadStart(RunPrincipal));
+                this.Close();
+                run.SetApartmentState(System.Threading.ApartmentState.STA);
+                run.Start();
             }
 
         }
         private void RunPrincipal()
-        {
+        {          
             Principal Login = new Principal();
+            Login.Idtrabajador = Datos.Rows[0][0].ToString();
+            Login.Apellidos = Datos.Rows[0][1].ToString();
+            Login.Nombre = Datos.Rows[0][2].ToString();
+            Login.Acceso = Datos.Rows[0][3].ToString();
             Login.ShowDialog();
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

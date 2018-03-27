@@ -10,12 +10,13 @@ namespace RRAlmacen.CapaNegocios
 {
     public class NArticulo
     {
-        public static string Insertar(string codigo, string nombre, string descripcion,  int idcategoria, int idpresentacion)
+        public static string Insertar(string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion)
         {
             DArticulo Obj = new DArticulo();
             Obj.Codigo = codigo;
             Obj.Nombre = nombre;
             Obj.Descripcion = descripcion;
+            Obj.Imagen = imagen;
             Obj.Idcategoria = idcategoria;
             Obj.Idpresentacion = idpresentacion;
 
@@ -24,13 +25,14 @@ namespace RRAlmacen.CapaNegocios
 
         //Método Editar que llama al método Editar de la clase DArticulo
         //de la CapaDatos
-        public static string Editar(int idarticulo, string codigo, string nombre, string descripcion, int idcategoria, int idpresentacion)
+        public static string Editar(int idarticulo, string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion)
         {
             DArticulo Obj = new DArticulo();
             Obj.Idarticulo = idarticulo;
             Obj.Codigo = codigo;
             Obj.Nombre = nombre;
             Obj.Descripcion = descripcion;
+            Obj.Imagen = imagen;
             Obj.Idcategoria = idcategoria;
             Obj.Idpresentacion = idpresentacion;
             return Obj.Editar(Obj);

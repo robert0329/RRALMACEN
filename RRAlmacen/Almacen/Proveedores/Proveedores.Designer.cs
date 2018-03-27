@@ -61,12 +61,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lvProductos = new System.Windows.Forms.ListView();
+            this.dataListado = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.chkEliminar = new System.Windows.Forms.CheckBox();
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -82,7 +86,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lvProductos);
+            this.tabPage1.Controls.Add(this.dataListado);
+            this.tabPage1.Controls.Add(this.chkEliminar);
             this.tabPage1.Controls.Add(this.cbBuscar);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.btnEliminar);
@@ -148,7 +153,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(124, 28);
+            this.txtBuscar.Location = new System.Drawing.Point(156, 32);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(133, 20);
@@ -447,14 +452,46 @@
             // 
             this.errorIcono.ContainerControl = this;
             // 
-            // lvProductos
+            // dataListado
             // 
-            this.lvProductos.Location = new System.Drawing.Point(10, 83);
-            this.lvProductos.Name = "lvProductos";
-            this.lvProductos.Size = new System.Drawing.Size(608, 219);
-            this.lvProductos.TabIndex = 62;
-            this.lvProductos.UseCompatibleStateImageBehavior = false;
-            this.lvProductos.SelectedIndexChanged += new System.EventHandler(this.lvProductos_SelectedIndexChanged_1);
+            this.dataListado.AllowUserToAddRows = false;
+            this.dataListado.AllowUserToDeleteRows = false;
+            this.dataListado.AllowUserToOrderColumns = true;
+            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Eliminar});
+            this.dataListado.Location = new System.Drawing.Point(10, 82);
+            this.dataListado.Margin = new System.Windows.Forms.Padding(2);
+            this.dataListado.MultiSelect = false;
+            this.dataListado.Name = "dataListado";
+            this.dataListado.ReadOnly = true;
+            this.dataListado.RowTemplate.Height = 24;
+            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListado.Size = new System.Drawing.Size(590, 215);
+            this.dataListado.TabIndex = 11;
+            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // chkEliminar
+            // 
+            this.chkEliminar.AutoSize = true;
+            this.chkEliminar.Location = new System.Drawing.Point(10, 59);
+            this.chkEliminar.Margin = new System.Windows.Forms.Padding(2);
+            this.chkEliminar.Name = "chkEliminar";
+            this.chkEliminar.Size = new System.Drawing.Size(62, 17);
+            this.chkEliminar.TabIndex = 9;
+            this.chkEliminar.Text = "Eliminar";
+            this.chkEliminar.UseVisualStyleBackColor = true;
+            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
             // 
             // Proveedores
             // 
@@ -474,6 +511,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,6 +550,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorIcono;
-        private System.Windows.Forms.ListView lvProductos;
+        private System.Windows.Forms.DataGridView dataListado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
+        private System.Windows.Forms.CheckBox chkEliminar;
+        private System.Windows.Forms.ToolTip ttMensaje;
     }
 }

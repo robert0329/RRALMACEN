@@ -18,14 +18,16 @@ namespace RRAlmacen.Almacen.Ingresos
             InitializeComponent();
             this.ttMensaje.SetToolTip(this.txtNombre, "Ingrese el Nombre de la Presentación");
         }
-        private bool IsNuevo = false;
 
+        #region Variables
+        private bool IsNuevo = false;
         private bool IsEditar = false;
+        #endregion
+        #region Botones
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.BuscarNombre();
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -64,7 +66,6 @@ namespace RRAlmacen.Almacen.Ingresos
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
@@ -74,7 +75,6 @@ namespace RRAlmacen.Almacen.Ingresos
             this.Habilitar(true);
             this.txtNombre.Focus();
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -128,7 +128,6 @@ namespace RRAlmacen.Almacen.Ingresos
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (!this.txtIdpresentacion.Text.Equals(""))
@@ -142,7 +141,6 @@ namespace RRAlmacen.Almacen.Ingresos
                 this.MensajeError("Debe de seleccionar primero el registro a Modificar");
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.IsNuevo = false;
@@ -151,7 +149,8 @@ namespace RRAlmacen.Almacen.Ingresos
             this.Limpiar();
             this.Habilitar(false);
         }
-
+        #endregion
+        #region Funciones
         private void Presentacion_Load(object sender, EventArgs e)
         {
             this.Top = 0;
@@ -166,31 +165,22 @@ namespace RRAlmacen.Almacen.Ingresos
             MessageBox.Show(mensaje, "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
-
-        //Mostrar Mensaje de Error
         private void MensajeError(string mensaje)
         {
             MessageBox.Show(mensaje, "Sistema de Ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        //Limpiar todos los controles del formulario
         private void Limpiar()
         {
             this.txtNombre.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
             this.txtIdpresentacion.Text = string.Empty;
         }
-
-        //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
             this.txtNombre.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
             this.txtIdpresentacion.ReadOnly = !valor;
         }
-
-        //Habilitar los botones
         private void Botones()
         {
             if (this.IsNuevo || this.IsEditar) //Alt + 124
@@ -211,30 +201,23 @@ namespace RRAlmacen.Almacen.Ingresos
             }
 
         }
-
-        //Método para ocultar columnas
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
         }
-
-        //Método Mostrar
         private void Mostrar()
         {
             this.dataListado.DataSource = NPresentacion.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
-
-        //Método BuscarNombre
         private void BuscarNombre()
         {
             this.dataListado.DataSource = NPresentacion.BuscarNombre(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
-
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEliminar.Checked)
@@ -246,11 +229,8 @@ namespace RRAlmacen.Almacen.Ingresos
                 this.dataListado.Columns[0].Visible = false;
             }
         }
-
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            
             if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
             {
                 DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
@@ -266,5 +246,6 @@ namespace RRAlmacen.Almacen.Ingresos
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
             this.tabControl1.SelectedIndex = 1;
         }
+        #endregion
     }
 }

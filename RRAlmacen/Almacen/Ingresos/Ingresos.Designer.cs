@@ -44,10 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ProveedorcomboBox = new System.Windows.Forms.ComboBox();
             this.lblTotal_Pagado = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.dataListadoDetalle = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ArticulocomboBox = new System.Windows.Forms.ComboBox();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dtFecha_Vencimiento = new System.Windows.Forms.DateTimePicker();
@@ -60,20 +62,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnBuscarArticulo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtArticulo = new System.Windows.Forms.TextBox();
             this.txtIgv = new System.Windows.Forms.TextBox();
-            this.txtIdarticulo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtCorrelativo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbTipo_Comprobante = new System.Windows.Forms.ComboBox();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnBuscarProveedor = new System.Windows.Forms.Button();
-            this.txtIdproveedor = new System.Windows.Forms.TextBox();
-            this.txtProveedor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -83,6 +79,7 @@
             this.txtIdingreso = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,7 +95,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(11, 43);
+            this.tabControl1.Location = new System.Drawing.Point(2, 52);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -171,6 +168,7 @@
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListado.Size = new System.Drawing.Size(670, 241);
             this.dataListado.TabIndex = 7;
+            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             // 
             // Eliminar
             // 
@@ -198,6 +196,7 @@
             this.chkEliminar.TabIndex = 5;
             this.chkEliminar.Text = "Anular";
             this.chkEliminar.UseVisualStyleBackColor = true;
+            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged_1);
             // 
             // btnImprimir
             // 
@@ -222,6 +221,7 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "&Anular";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
@@ -234,6 +234,7 @@
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "&Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label2
             // 
@@ -259,21 +260,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ProveedorcomboBox);
             this.groupBox1.Controls.Add(this.lblTotal_Pagado);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.dataListadoDetalle);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtIgv);
-            this.groupBox1.Controls.Add(this.txtIdarticulo);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtCorrelativo);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cbTipo_Comprobante);
             this.groupBox1.Controls.Add(this.dtFecha);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.btnBuscarProveedor);
-            this.groupBox1.Controls.Add(this.txtIdproveedor);
-            this.groupBox1.Controls.Add(this.txtProveedor);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtSerie);
             this.groupBox1.Controls.Add(this.label6);
@@ -286,10 +284,18 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(693, 315);
+            this.groupBox1.Size = new System.Drawing.Size(673, 315);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos Almacén";
+            // 
+            // ProveedorcomboBox
+            // 
+            this.ProveedorcomboBox.FormattingEnabled = true;
+            this.ProveedorcomboBox.Location = new System.Drawing.Point(265, 34);
+            this.ProveedorcomboBox.Name = "ProveedorcomboBox";
+            this.ProveedorcomboBox.Size = new System.Drawing.Size(139, 21);
+            this.ProveedorcomboBox.TabIndex = 44;
             // 
             // lblTotal_Pagado
             // 
@@ -322,9 +328,11 @@
             this.dataListadoDetalle.RowTemplate.Height = 24;
             this.dataListadoDetalle.Size = new System.Drawing.Size(637, 104);
             this.dataListadoDetalle.TabIndex = 32;
+            this.dataListadoDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListadoDetalle_CellContentClick);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ArticulocomboBox);
             this.groupBox2.Controls.Add(this.btnQuitar);
             this.groupBox2.Controls.Add(this.btnAgregar);
             this.groupBox2.Controls.Add(this.dtFecha_Vencimiento);
@@ -337,25 +345,30 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtStock);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.btnBuscarArticulo);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtArticulo);
             this.groupBox2.Location = new System.Drawing.Point(11, 93);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(669, 76);
+            this.groupBox2.Size = new System.Drawing.Size(641, 76);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
+            // 
+            // ArticulocomboBox
+            // 
+            this.ArticulocomboBox.FormattingEnabled = true;
+            this.ArticulocomboBox.Location = new System.Drawing.Point(66, 14);
+            this.ArticulocomboBox.Name = "ArticulocomboBox";
+            this.ArticulocomboBox.Size = new System.Drawing.Size(139, 21);
+            this.ArticulocomboBox.TabIndex = 42;
             // 
             // btnQuitar
             // 
             this.btnQuitar.Location = new System.Drawing.Point(594, 44);
             this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(71, 27);
+            this.btnQuitar.Size = new System.Drawing.Size(43, 27);
             this.btnQuitar.TabIndex = 41;
-            this.btnQuitar.Text = "Eliminar";
             this.btnQuitar.UseVisualStyleBackColor = true;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
@@ -364,9 +377,8 @@
             this.btnAgregar.Location = new System.Drawing.Point(594, 13);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(71, 27);
+            this.btnAgregar.Size = new System.Drawing.Size(43, 27);
             this.btnAgregar.TabIndex = 40;
-            this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -468,16 +480,6 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Stock Inicial:";
             // 
-            // btnBuscarArticulo
-            // 
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(172, 10);
-            this.btnBuscarArticulo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscarArticulo.Name = "btnBuscarArticulo";
-            this.btnBuscarArticulo.Size = new System.Drawing.Size(32, 25);
-            this.btnBuscarArticulo.TabIndex = 32;
-            this.btnBuscarArticulo.UseVisualStyleBackColor = true;
-            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -488,16 +490,6 @@
             this.label4.TabIndex = 29;
             this.label4.Text = "Artículo:";
             // 
-            // txtArticulo
-            // 
-            this.txtArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.txtArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtArticulo.Location = new System.Drawing.Point(74, 13);
-            this.txtArticulo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtArticulo.Name = "txtArticulo";
-            this.txtArticulo.Size = new System.Drawing.Size(94, 20);
-            this.txtArticulo.TabIndex = 30;
-            // 
             // txtIgv
             // 
             this.txtIgv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -507,16 +499,6 @@
             this.txtIgv.Name = "txtIgv";
             this.txtIgv.Size = new System.Drawing.Size(82, 20);
             this.txtIgv.TabIndex = 27;
-            // 
-            // txtIdarticulo
-            // 
-            this.txtIdarticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.txtIdarticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdarticulo.Location = new System.Drawing.Point(19, 78);
-            this.txtIdarticulo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtIdarticulo.Name = "txtIdarticulo";
-            this.txtIdarticulo.Size = new System.Drawing.Size(42, 20);
-            this.txtIdarticulo.TabIndex = 31;
             // 
             // label11
             // 
@@ -582,36 +564,6 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Fecha:";
             // 
-            // btnBuscarProveedor
-            // 
-            this.btnBuscarProveedor.Location = new System.Drawing.Point(366, 28);
-            this.btnBuscarProveedor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
-            this.btnBuscarProveedor.Size = new System.Drawing.Size(32, 25);
-            this.btnBuscarProveedor.TabIndex = 18;
-            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
-            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
-            // 
-            // txtIdproveedor
-            // 
-            this.txtIdproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.txtIdproveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdproveedor.Location = new System.Drawing.Point(268, 10);
-            this.txtIdproveedor.Margin = new System.Windows.Forms.Padding(2);
-            this.txtIdproveedor.Name = "txtIdproveedor";
-            this.txtIdproveedor.Size = new System.Drawing.Size(42, 20);
-            this.txtIdproveedor.TabIndex = 17;
-            // 
-            // txtProveedor
-            // 
-            this.txtProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProveedor.Location = new System.Drawing.Point(268, 32);
-            this.txtProveedor.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(94, 20);
-            this.txtProveedor.TabIndex = 16;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -653,6 +605,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -665,6 +618,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
@@ -677,6 +631,7 @@
             this.btnNuevo.TabIndex = 6;
             this.btnNuevo.Text = "&Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // txtIdingreso
             // 
@@ -703,12 +658,16 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Location = new System.Drawing.Point(11, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 29);
             this.label1.TabIndex = 12;
             this.label1.Text = "Ingresos Almacén";
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
             // 
             // errorIcono
             // 
@@ -718,8 +677,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(735, 431);
+            this.ClientSize = new System.Drawing.Size(722, 432);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "Ingresos";
@@ -774,20 +732,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnBuscarArticulo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtArticulo;
         private System.Windows.Forms.TextBox txtIgv;
-        private System.Windows.Forms.TextBox txtIdarticulo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtCorrelativo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbTipo_Comprobante;
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnBuscarProveedor;
-        private System.Windows.Forms.TextBox txtIdproveedor;
-        private System.Windows.Forms.TextBox txtProveedor;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label6;
@@ -797,6 +749,9 @@
         private System.Windows.Forms.TextBox txtIdingreso;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip ttMensaje;
         private System.Windows.Forms.ErrorProvider errorIcono;
+        private System.Windows.Forms.ComboBox ProveedorcomboBox;
+        private System.Windows.Forms.ComboBox ArticulocomboBox;
     }
 }

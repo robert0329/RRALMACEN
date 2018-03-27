@@ -1,5 +1,4 @@
 ﻿
-using RRAlmacen.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,8 +24,5 @@ namespace RRAlmacen.DAL
                 return ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
             }
         }
-        public virtual DbSet<Productos> productos { get; set; }
-        public virtual DbSet<Usuarios> usuario { get; set; }
-
     }
 }

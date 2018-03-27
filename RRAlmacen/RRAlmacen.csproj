@@ -116,10 +116,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Almacen\Ingresos\Categorias.cs">
+    <Compile Include="Almacen\Categorias\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Categorias.Designer.cs">
+    <Compile Include="Almacen\Categorias\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Database\AppConfig.cs">
@@ -128,22 +128,22 @@
     <Compile Include="Almacen\Database\AppConfig.Designer.cs">
       <DependentUpon>AppConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Articulos.cs">
+    <Compile Include="Almacen\Articulos\Articulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Articulos.Designer.cs">
+    <Compile Include="Almacen\Articulos\Articulos.Designer.cs">
       <DependentUpon>Articulos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.cs">
+    <Compile Include="Almacen\Articulos\FrmVistaArticulo_Ingreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.Designer.cs">
+    <Compile Include="Almacen\Articulos\FrmVistaArticulo_Ingreso.Designer.cs">
       <DependentUpon>FrmVistaArticulo_Ingreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.cs">
+    <Compile Include="Almacen\Proveedores\FrmVistaProveedor_Ingreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.Designer.cs">
+    <Compile Include="Almacen\Proveedores\FrmVistaProveedor_Ingreso.Designer.cs">
       <DependentUpon>FrmVistaProveedor_Ingreso.cs</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Ingresos\Ingresos.cs">
@@ -152,35 +152,29 @@
     <Compile Include="Almacen\Ingresos\Ingresos.Designer.cs">
       <DependentUpon>Ingresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Presentacion.cs">
+    <Compile Include="Almacen\Presentacion\Presentacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Presentacion.Designer.cs">
+    <Compile Include="Almacen\Presentacion\Presentacion.Designer.cs">
       <DependentUpon>Presentacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Proveedores.cs">
+    <Compile Include="Almacen\Proveedores\Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\Proveedores.Designer.cs">
+    <Compile Include="Almacen\Proveedores\Proveedores.Designer.cs">
       <DependentUpon>Proveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Ingresos\VistaCategoria_Articulo.cs">
+    <Compile Include="Almacen\Usuarios\Trabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Almacen\Ingresos\VistaCategoria_Articulo.Designer.cs">
+    <Compile Include="Almacen\Usuarios\Trabajadores.Designer.cs">
+      <DependentUpon>Trabajadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Categorias\VistaCategoria_Articulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Categorias\VistaCategoria_Articulo.Designer.cs">
       <DependentUpon>VistaCategoria_Articulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\Productos\BuscarProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Productos\BuscarProducto.Designer.cs">
-      <DependentUpon>BuscarProducto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\Productos\Productos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Productos\Productos.Designer.cs">
-      <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="Almacen\Usuarios\Login.cs">
       <SubType>Form</SubType>
@@ -188,39 +182,22 @@
     <Compile Include="Almacen\Usuarios\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Almacen\Usuarios\RegistroUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Usuarios\RegistroUsuarios.Designer.cs">
-      <DependentUpon>RegistroUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\Ventas\Cobrar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Ventas\Cobrar.Designer.cs">
-      <DependentUpon>Cobrar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Almacen\Ventas\Ventas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Almacen\Ventas\Ventas.Designer.cs">
-      <DependentUpon>Ventas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BLL\ProductosBLL.cs" />
-    <Compile Include="BLL\UsuariosBLL.cs" />
     <Compile Include="CapaDeDatos\DArticulo.cs" />
     <Compile Include="CapaDeDatos\DCategoria.cs" />
+    <Compile Include="CapaDeDatos\DDetalle_Ingreso.cs" />
+    <Compile Include="CapaDeDatos\DIngreso.cs" />
     <Compile Include="CapaDeDatos\DPresentacion.cs" />
     <Compile Include="CapaDeDatos\DProductos.cs" />
     <Compile Include="CapaDeDatos\DProveedor.cs" />
+    <Compile Include="CapaDeDatos\DTrabajador.cs" />
     <Compile Include="CapaNegocios\NArticulo.cs" />
     <Compile Include="CapaNegocios\NCategoria.cs" />
+    <Compile Include="CapaNegocios\NIngresos.cs" />
     <Compile Include="CapaNegocios\NPresentacion.cs" />
     <Compile Include="CapaNegocios\NProductos.cs" />
     <Compile Include="CapaNegocios\NProveedor.cs" />
+    <Compile Include="CapaNegocios\NTrabajador.cs" />
     <Compile Include="DAL\RRSOFT.cs" />
-    <Compile Include="Entidades\Productos.cs" />
-    <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="mPrintDocument.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -244,50 +221,38 @@
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Utilidades.cs" />
-    <EmbeddedResource Include="Almacen\Ingresos\Categorias.resx">
+    <EmbeddedResource Include="Almacen\Categorias\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Database\AppConfig.resx">
       <DependentUpon>AppConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\Articulos.resx">
+    <EmbeddedResource Include="Almacen\Articulos\Articulos.resx">
       <DependentUpon>Articulos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\FrmVistaArticulo_Ingreso.resx">
+    <EmbeddedResource Include="Almacen\Articulos\FrmVistaArticulo_Ingreso.resx">
       <DependentUpon>FrmVistaArticulo_Ingreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\FrmVistaProveedor_Ingreso.resx">
+    <EmbeddedResource Include="Almacen\Proveedores\FrmVistaProveedor_Ingreso.resx">
       <DependentUpon>FrmVistaProveedor_Ingreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Ingresos\Ingresos.resx">
       <DependentUpon>Ingresos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\Presentacion.resx">
+    <EmbeddedResource Include="Almacen\Presentacion\Presentacion.resx">
       <DependentUpon>Presentacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\Proveedores.resx">
+    <EmbeddedResource Include="Almacen\Proveedores\Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ingresos\VistaCategoria_Articulo.resx">
+    <EmbeddedResource Include="Almacen\Usuarios\Trabajadores.resx">
+      <DependentUpon>Trabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Categorias\VistaCategoria_Articulo.resx">
       <DependentUpon>VistaCategoria_Articulo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Productos\BuscarProducto.resx">
-      <DependentUpon>BuscarProducto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Productos\Productos.resx">
-      <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Usuarios\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Usuarios\RegistroUsuarios.resx">
-      <DependentUpon>RegistroUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ventas\Cobrar.resx">
-      <DependentUpon>Cobrar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Almacen\Ventas\Ventas.resx">
-      <DependentUpon>Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
