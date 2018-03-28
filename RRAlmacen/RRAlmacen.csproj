@@ -122,6 +122,24 @@
     <Compile Include="Almacen\Categorias\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\Clientes\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Clientes\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Consultas\ConsultaCompras.cs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Consultas\ConsultaCompras.cs.Designer.cs">
+      <DependentUpon>ConsultaCompras.cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\Consultas\Consulta_Stock_Articulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\Consultas\Consulta_Stock_Articulos.Designer.cs">
+      <DependentUpon>Consulta_Stock_Articulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Almacen\Database\AppConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,23 +200,6 @@
     <Compile Include="Almacen\Usuarios\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="CapaDeDatos\DArticulo.cs" />
-    <Compile Include="CapaDeDatos\DCategoria.cs" />
-    <Compile Include="CapaDeDatos\DDetalle_Ingreso.cs" />
-    <Compile Include="CapaDeDatos\DIngreso.cs" />
-    <Compile Include="CapaDeDatos\DPresentacion.cs" />
-    <Compile Include="CapaDeDatos\DProductos.cs" />
-    <Compile Include="CapaDeDatos\DProveedor.cs" />
-    <Compile Include="CapaDeDatos\DTrabajador.cs" />
-    <Compile Include="CapaNegocios\NArticulo.cs" />
-    <Compile Include="CapaNegocios\NCategoria.cs" />
-    <Compile Include="CapaNegocios\NIngresos.cs" />
-    <Compile Include="CapaNegocios\NPresentacion.cs" />
-    <Compile Include="CapaNegocios\NProductos.cs" />
-    <Compile Include="CapaNegocios\NProveedor.cs" />
-    <Compile Include="CapaNegocios\NTrabajador.cs" />
-    <Compile Include="DAL\RRSOFT.cs" />
-    <Compile Include="mPrintDocument.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,16 +214,19 @@
     <Compile Include="SoftWare.Designer.cs">
       <DependentUpon>SoftWare.cs</DependentUpon>
     </Compile>
-    <Compile Include="Splash\Loading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Splash\Loading.Designer.cs">
-      <DependentUpon>Loading.cs</DependentUpon>
-    </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Utilidades.cs" />
     <EmbeddedResource Include="Almacen\Categorias\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Clientes\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Consultas\ConsultaCompras.cs.resx">
+      <DependentUpon>ConsultaCompras.cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\Consultas\Consulta_Stock_Articulos.resx">
+      <DependentUpon>Consulta_Stock_Articulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\Database\AppConfig.resx">
       <DependentUpon>AppConfig.cs</DependentUpon>
@@ -270,9 +274,6 @@
     <EmbeddedResource Include="SoftWare.resx">
       <DependentUpon>SoftWare.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Splash\Loading.resx">
-      <DependentUpon>Loading.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -303,9 +304,66 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="JavaScript1.js" />
+    <Content Include="Resources\agregar_p.png" />
+    <Content Include="Resources\archivo.png" />
+    <Content Include="Resources\Banned User.png" />
+    <Content Include="Resources\Box.png" />
+    <Content Include="Resources\Buscadetalle_p.png" />
+    <Content Include="Resources\Buscar.png" />
+    <Content Include="Resources\Buscar_p.png" />
+    <Content Include="Resources\caja_b.png" />
+    <Content Include="Resources\caja_m.png" />
+    <Content Include="Resources\cancel.png" />
+    <Content Include="Resources\categoria.png" />
+    <Content Include="Resources\cliente_m.png" />
+    <Content Include="Resources\cog.png" />
+    <Content Include="Resources\cog1.png" />
+    <Content Include="Resources\coins_add.png" />
+    <Content Include="Resources\comprasdetalladas.png" />
+    <Content Include="Resources\comprasrealizadas.png" />
+    <Content Include="Resources\compra_b.png" />
+    <Content Include="Resources\compra_b1.png" />
+    <Content Include="Resources\compra_m.png" />
+    <Content Include="Resources\consultas.png" />
+    <Content Include="Resources\Database.png" />
+    <Content Include="Resources\disco.png" />
+    <Content Include="Resources\documento.png" />
+    <Content Include="Resources\door_in.png" />
+    <Content Include="Resources\door_in1.png" />
+    <Content Include="Resources\eliminar.png" />
+    <Content Include="Resources\empleados_b.png" />
+    <Content Include="Resources\error2.png" />
+    <Content Include="Resources\file.png" />
+    <Content Include="Resources\file_add.png" />
+    <Content Include="Resources\file_delete.png" />
+    <Content Include="Resources\folder.png" />
+    <Content Include="Resources\folder1.png" />
+    <Content Include="Resources\graduation-hat.png" />
+    <Content Include="Resources\imprimir.png" />
+    <Content Include="Resources\leather-bag.png" />
+    <Content Include="Resources\modificar.png" />
+    <Content Include="Resources\My Icons.png" />
+    <Content Include="Resources\nuevo.png" />
+    <Content Include="Resources\onebit_20.png" />
+    <Content Include="Resources\pencil-scale.png" />
+    <Content Include="Resources\productos_m.png" />
+    <Content Include="Resources\productos_m1.png" />
+    <Content Include="Resources\proveedores_m.png" />
+    <Content Include="Resources\Remove.png" />
+    <Content Include="Resources\Remove1.png" />
+    <Content Include="Resources\report.png" />
+    <Content Include="Resources\restaurar.png" />
+    <Content Include="Resources\Tag.png" />
+    <Content Include="Resources\testtube.png" />
+    <Content Include="Resources\Users 2.png" />
+    <Content Include="Resources\ventas2.png" />
+    <Content Include="Resources\ventasrealizadas.png" />
+    <Content Include="Resources\ventasrealizadas1.png" />
+    <Content Include="Resources\ventas_m.png" />
+    <Content Include="Resources\Ver_recibo.png" />
     <None Include="Resources\image-3.1.1.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
@@ -317,6 +375,20 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
+      <Project>{243F21E0-0847-4F77-8950-33E1B50B7115}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocios\CapaNegocios.csproj">
+      <Project>{8064E991-8AEC-4451-AA98-BC9AB3A8B52E}</Project>
+      <Name>CapaNegocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Conexion\Conexion.csproj">
+      <Project>{783845E7-295F-4E71-A28E-C98105F52079}</Project>
+      <Name>Conexion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

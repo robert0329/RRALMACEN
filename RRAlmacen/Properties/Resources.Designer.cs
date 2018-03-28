@@ -63,6 +63,16 @@ namespace RRAlmacen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap compra_b {
+            get {
+                object obj = ResourceManager.GetObject("compra_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fondo_blanco_mullido_1053_302 {
             get {
                 object obj = ResourceManager.GetObject("fondo-blanco-mullido_1053-302", resourceCulture);

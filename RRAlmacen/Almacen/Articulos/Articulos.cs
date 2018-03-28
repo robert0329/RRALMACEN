@@ -1,13 +1,5 @@
 ﻿using CapaNegocios;
-using RRAlmacen.CapaNegocios;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RRAlmacen.Almacen.Ingresos
@@ -64,7 +56,7 @@ namespace RRAlmacen.Almacen.Ingresos
                 else
                 {
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                    this.pxImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    //this.pxImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 
                     byte[] imagen = ms.GetBuffer();
 
@@ -249,7 +241,6 @@ namespace RRAlmacen.Almacen.Ingresos
             this.txtCodigo.ReadOnly = !valor;
             this.txtNombre.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
-            this.btnBuscarCategoria.Enabled = valor;
             this.cbIdpresentacion.Enabled = valor;
             this.Categoriacombox.Enabled = valor;
             //this.btnCargar.Enabled = valor;
@@ -324,14 +315,14 @@ namespace RRAlmacen.Almacen.Ingresos
 
             if (result == DialogResult.OK)
             {
-                this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.pxImagen.Image = Image.FromFile(dialog.FileName);
+               // this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+               // this.pxImagen.Image = Image.FromFile(dialog.FileName);
             }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            //this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using RRAlmacen.CapaNegocios;
-using RRAlmacen.DAL;
+﻿
+
+using CapaNegocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,12 +45,18 @@ namespace RRAlmacen.Almacen.Usuarios
             Login.Apellidos = Datos.Rows[0][1].ToString();
             Login.Nombre = Datos.Rows[0][2].ToString();
             Login.Acceso = Datos.Rows[0][3].ToString();
+            Login.Id(Convert.ToInt32(Login.Idtrabajador));
             Login.ShowDialog();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

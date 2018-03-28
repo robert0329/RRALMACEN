@@ -11,8 +11,8 @@ namespace RRAlmacen
     public class Utilidades
     {
         TextBox caja;
-        string Texto;
-
+        public string Texto;
+        
         public static int ToInt(string Numero)
         {
             int retorno = 0;

@@ -50,6 +50,7 @@
             this.label1.Size = new System.Drawing.Size(329, 18);
             this.label1.TabIndex = 11;
             this.label1.Text = "Ingrese usuario y contraseña para tener acceso ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 

@@ -1,4 +1,5 @@
-﻿using RRAlmacen.CapaNegocios;
+﻿
+using CapaNegocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace RRAlmacen.Almacen.Ingresos
         }
 
         #region Funciones
-        public int Idtrabajador;
+        public string Idtrabajador;
         private bool IsNuevo;
         private DataTable dtDetalle;
         private decimal totalPagado = 0;
@@ -322,7 +323,7 @@ namespace RRAlmacen.Almacen.Ingresos
                 //Removemos la fila
                 this.dtDetalle.Rows.Remove(row);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MensajeError("No hay fila para remover");
             }
@@ -356,7 +357,7 @@ namespace RRAlmacen.Almacen.Ingresos
 
                     if (this.IsNuevo)
                     {
-                        rpta = NIngresos.Insertar(Idtrabajador, Convert.ToInt32(this.ProveedorcomboBox.SelectedValue),
+                        rpta = NIngresos.Insertar(Convert.ToInt32(Idtrabajador), Convert.ToInt32(this.ProveedorcomboBox.SelectedValue),
                             dtFecha.Value, cbTipo_Comprobante.Text, txtSerie.Text, txtCorrelativo.Text,
                             Convert.ToDecimal(txtIgv.Text), "EMITIDO", dtDetalle);
 
@@ -414,8 +415,6 @@ namespace RRAlmacen.Almacen.Ingresos
             }
         }
 
-        
-
         private void Ingresos_Load(object sender, EventArgs e)
         {
             this.Top = 0;
@@ -424,7 +423,18 @@ namespace RRAlmacen.Almacen.Ingresos
             this.Habilitar(false);
             this.Botones();
             this.crearTabla();
-        } 
+            Principal p = new Principal();
+        }
+        public Ingresos(string Id)
+        {
+            InitializeComponent();
+            this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese la serie del comprobante");
+            this.ttMensaje.SetToolTip(this.txtCorrelativo, "Ingrese el número del comprobante");
+            this.ttMensaje.SetToolTip(this.txtStock, "Ingrese la cantidad de compra");
+            LlenarComboArticulo();
+            LlenarComboProveedor();
+            Idtrabajador = Convert.ToString(Id);
+        }
         #endregion
     }
 }

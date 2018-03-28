@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D57B10BB-019C-43C5-88EA-899ED21AA4E8}</ProjectGuid>
+    <ProjectGuid>{8064E991-8AEC-4451-AA98-BC9AB3A8B52E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CapaNegocios</RootNamespace>
     <AssemblyName>CapaNegocios</AssemblyName>
@@ -45,7 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NArticulo.cs" />
     <Compile Include="NCategoria.cs" />
+    <Compile Include="NCliente.cs" />
+    <Compile Include="NIngresos.cs" />
+    <Compile Include="NPresentacion.cs" />
+    <Compile Include="NProveedor.cs" />
+    <Compile Include="NTrabajador.cs" />
+    <Compile Include="NVenta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -71,13 +84,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapasDeDatos\CapasDeDatos.csproj">
-      <Project>{8472DB97-1930-425E-8347-C4E590320D1B}</Project>
-      <Name>CapasDeDatos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RRAlmacen\RRAlmacen.csproj">
-      <Project>{c956404e-ca85-4223-8b75-f7445614d155}</Project>
-      <Name>RRAlmacen</Name>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
+      <Project>{243F21E0-0847-4F77-8950-33E1B50B7115}</Project>
+      <Name>CapaDeDatos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

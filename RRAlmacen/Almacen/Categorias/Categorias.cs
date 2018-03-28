@@ -1,5 +1,4 @@
 ﻿using CapaNegocios;
-using RRAlmacen.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
