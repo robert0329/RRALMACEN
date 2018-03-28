@@ -12,6 +12,7 @@ namespace CapaDeDatos
 {
     public class DArticulo
     {
+        //
         #region Variables
         private int _Idarticulo;
         private string _Codigo;
